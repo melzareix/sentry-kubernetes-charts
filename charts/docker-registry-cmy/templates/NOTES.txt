@@ -1,0 +1,27 @@
+
+Your Docker Registry is deployed to the cluster.
+
+{{- if index .Values "docker-registry" "ingress" "enabled" }}
+{{- range index .Values "docker-registry" "ingress" "hosts" }}
+
+Once the pods have started, the registry is available at http{{ if index $.Values "docker-registry"
+"ingress" "tls" }}s{{ end }}://{{ . }}{{ index $.Values "docker-registry" "ingress" "path" }}
+
+To access the registry from you local machine, login via docker with
+
+kubectl get secret registry-secret -o "jsonpath={.data.password}" | base64 -d | docker login --password-stdin -u {{ index $.Values "docker-registry" "htpasswd" "username" }} http{{ if index $.Values "docker-registry" "ingress" "tls" }}s{{ end }}://{{ . }}{{ index $.Values "docker-registry" "ingress" "path" }}
+
+To access the images in a namespace, create an image pull secret with
+
+# in registry namespace
+export REGISTRY_USERNAME=$(kubectl get secret registry-secret -o "jsonpath={.data.username}" | base64 -d)
+export REGISTRY_PASSWORD=$(kubectl get secret registry-secret -o "jsonpath={.data.password}" | base64 -d)
+
+# in target namespace
+kubectl create secret docker-registry registry-credentials --docker-server=http{{ if index $.Values "docker-registry" "ingress" "tls" }}s{{ end }}://{{ . }}{{ index $.Values "docker-registry" "ingress" "path" }} --docker-username=$REGISTRY_USERNAME --docker-password=$REGISTRY_PASSWORD
+
+The secret "registry-credentials" can then be specified as "imagePullSecrets" in your
+deployments. For Details see https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-pod-that-uses-your-secret.
+
+{{ end }}
+{{ end }}
