@@ -29,4 +29,3 @@ appVersion: 1.16.0
 dependencies:
   - name: docker-registry
     version: 1.9.6
-    repository: "file://./charts/docker-registry"
