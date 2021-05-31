@@ -8,12 +8,12 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Publish helm charts
-        uses: stefanprodan/helm-gh-pages@v1.4.1
+        uses: stefanprodan/helm-gh-pages@f1701eb82e4d4b82016e7965501c8b6d79feaec9
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
