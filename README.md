@@ -1,17 +1,18 @@
-# Cloudmobility charts
+# cloudmobility charts
 
-Cloudmobility tailored charts available as `applications` in our platform.
+Source code for cloudmobility charts, available as `applications` in our [platform](https://portal.cloudmobility.io/).
 
-The charts are available through a normal helm repo at [cloudmobility.github.io/charts](https://cloudmobility.github.io/charts)
+These charts are also available through a helm repo at [cloudmobility.github.io/charts](https://cloudmobility.github.io/charts).
 
 ## Usage
 
 You have two options when it comes to using our charts:
-* As a cloudmobility application
-* As a normal helm chart through [helm CLI](https://helm.sh/docs/intro/install/)
+* As a cloudmobility application in our [platform](https://portal.cloudmobility.io/).
+* As a helm chart through [helm CLI](https://helm.sh/docs/intro/install/)
 
-### 1. Cloudmobility applications
+### 1. cloudmobility applications
 
+Visit [https://portal.cloudmobility.io/](https://portal.cloudmobility.io/).
 ### 2. Helm CLI
 
 1. `helm repo add cloudmobility https://cloudmobility.github.io/charts`

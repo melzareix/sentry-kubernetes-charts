@@ -11,24 +11,23 @@ Elasticsearch, OpenTSDB, Prometheus and InfluxDB(TM).
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Installation](#Installing the Chart)
-* [Uninstallation](#Uninstalling the Chart)
-* [Configuration](#Configuration)
-    * [Parameters](#Parameters)
-    * [Deployment parameters](#Deployment parameters)
-    * [Persistence parameters](#Persistence parameters)
-    * [Exposure parameters](#Exposure parameters)
-    * [Metrics parameters](#Metrics parameters)
+* [Installing](#installing-the-chart)
+* [Uninstalling](#uninstalling-the-chart)
+* [Configuration](#configuration)
+    * [Parameters](#parameters)
+    * [Deployment parameters](#deployment-parameters)
+    * [Persistence parameters](#persistence-parameters)
+    * [Exposure parameters](#exposure-parameters)
+    * [Metrics parameters](#metrics-parameters)
 
 ## Introduction
 
-This chart bootstraps a grafana deployment on a [Kubernetes](http://kubernetes.io) cluster using
-the [Helm](https://helm.sh) package manager.
+This chart deploys a Grafana on a [Kubernetes](http://kubernetes.io) cluster using
+[Helm](https://helm.sh).
 
-cloudmobility charts are tailored charts from [bitnami](https://github.com/bitnami/charts/tree/master/bitnami) with
-adjustments in the configuration in order to run smoothly in our infrastructure.
+cloudmobility charts are tailored [bitnami](https://github.com/bitnami/charts/tree/master/bitnami) charts that contain adjustments to the configuration, allowing you a one-click deployment experience in our [platform](https://portal.cloudmobility.io/).
 
-> **IMPORTANT**: We recommend the usage, deployment and configuration of this chart with a continuous delivery strategy.
+> **Tip**: We recommend using and configuring this chart with a continuous delivery strategy.
 
 ## Installing the Chart
 
@@ -52,7 +51,7 @@ $ helm delete cmy-grafana
 
 Since this chart has [bitnami/grafana](https://github.com/bitnami/charts/tree/master/bitnami/grafana) chart as
 dependency you can use all the configuration provided by that chart. In order to do so, be sure to prepend all the
-configuration with **grafana.**.
+configuration with **grafana**.
 
 The configuration of this chart can be exhaustive. In order to minimize the configuration the following list will show
 the parameters that we think that may be important for you. If you want to have access to the full configuration of the
@@ -107,7 +106,7 @@ In order to give a better experience regarding ingresses and tls we are allowing
 controller. If you don't know how it works we strongly suggest reading the
 [documentation](https://portal.cloudmobility.io/docs/en/cns/shared-ingress-controller.html)
 regarding this annotation and the features that it provides.
-> **Tip**: You can also use a [dedicated ingress controller](https://portal.cloudmobility.io/docs/en/cns/dedicated-ingress-controller.html)
+> **Note**: You can also use a [dedicated ingress controller](https://portal.cloudmobility.io/docs/en/cns/dedicated-ingress-controller.html)
 
 | Parameter                                  | Description                                                                            | Default                                                             |
 |--------------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
