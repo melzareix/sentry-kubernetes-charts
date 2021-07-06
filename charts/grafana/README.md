@@ -2,9 +2,23 @@
 
 ![grafana-chart-badge](https://img.shields.io/badge/Grafana%20Chart-1.0.0-green?style=flat-square&logo=helm)
 ![grafana-version-badge](https://img.shields.io/badge/Grafana%20Version-8.0.4-green?style=flat-square&logo=grafana)
+![bitnami-charts](https://img.shields.io/badge/bitnami-charts-1598CB)
 ---
+
 [Grafana](https://grafana.com/) is an open source, feature rich metrics dashboard and graph editor for Graphite,
 Elasticsearch, OpenTSDB, Prometheus and InfluxDB(TM).
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Installation](#Installing the Chart)
+* [Uninstallation](#Uninstalling the Chart)
+* [Configuration](#Configuration)
+    * [Parameters](#Parameters)
+    * [Deployment parameters](#Deployment parameters)
+    * [Persistence parameters](#Persistence parameters)
+    * [Exposure parameters](#Exposure parameters)
+    * [Metrics parameters](#Metrics parameters)
 
 ## Introduction
 
@@ -13,6 +27,8 @@ the [Helm](https://helm.sh) package manager.
 
 cloudmobility charts are tailored charts from [bitnami](https://github.com/bitnami/charts/tree/master/bitnami) with
 adjustments in the configuration in order to run smoothly in our infrastructure.
+
+> **IMPORTANT**: We recommend the usage, deployment and configuration of this chart with a continuous delivery strategy.
 
 ## Installing the Chart
 
@@ -83,22 +99,23 @@ chart please have a look [here](https://github.com/bitnami/charts/tree/master/bi
 | `grafana.persistence.enabled`      | Enable persistence                | `true`          |
 | `grafana.persistence.storageClass` | Storage class to use with the PVC | `nil`           |
 | `grafana.persistence.accessMode`   | Access mode to the PV             | `ReadWriteOnce` |
-| `grafana.persistence.size`         | Size for the PV                   | `5Gi`          |
+| `grafana.persistence.size`         | Size for the PV                   | `5Gi`           |
 
 ### Exposure parameters
 
 In order to give a better experience regarding ingresses and tls we are allowing the users to use the cmy-shared ingress
-controller. If you don't know how it works we strongly suggest reading
-the [documentation](https://portal.cloudmobility.io/docs/en/cns/shared-ingress-controller.html) regarding this
-annotation and the features that it provides
+controller. If you don't know how it works we strongly suggest reading the
+[documentation](https://portal.cloudmobility.io/docs/en/cns/shared-ingress-controller.html)
+regarding this annotation and the features that it provides.
+> **Tip**: You can also use a [dedicated ingress controller](https://portal.cloudmobility.io/docs/en/cns/dedicated-ingress-controller.html)
 
-| Parameter                          | Description                                                                            | Default                                                             |
-|------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| `ingress.enabled`                  | Enable ingress controller resource                                                     | `true`                                                              |
-| `ingress.hostname`                 | Default host for the ingress resource. If specified as "*" no host rule is configured. | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`  |
-| `ingress.path`                     | Default path for the ingress resource                                                  | `/`                                                                 |
-| `ingress.tls`                      | Create TLS Secret                                                                      | `true`                                                              |
-| `ingress.annotations`              | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared]`                                                                |
+| Parameter                                  | Description                                                                            | Default                                                             |
+|--------------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| `grafana.ingress.enabled`                  | Enable ingress controller resource                                                     | `true`                                                              |
+| `grafana.ingress.hostname`                 | Default host for the ingress resource. If specified as "*" no host rule is configured. | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`  |
+| `grafana.ingress.path`                     | Default path for the ingress resource                                                  | `/`                                                                 |
+| `grafana.ingress.tls`                      | Create TLS Secret                                                                      | `true`                                                              |
+| `grafana.ingress.annotations`              | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared]`                         |
 
 ### Metrics parameters
 
