@@ -1,9 +1,6 @@
 ---
-name: Feature Request
-about: Suggest an idea for this the development of this project
-title: ''
-labels: 'enhancement, new chart'
-assignees: ''
+name: Feature Request about: Suggest an idea for this the development of this project title: ''
+labels: 'enhancement, new chart' assignees: ''
 ---
 
 <!--
@@ -13,7 +10,7 @@ assignees: ''
  -->
 
 **Which chart**:
-[name]-[version]
+[name]@[version]
 
 **Is your feature request related to a problem? Please describe.**
 A clear description of the request for the new feature for this project.
