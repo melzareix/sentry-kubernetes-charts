@@ -1,6 +1,11 @@
 apiVersion: v2
+type: application
 name: hello
 description: An hello cloudmobility application
-type: application
+home: https://github.com/cloudmobility/charts/tree/master/charts/hello
+icon: https://cloudmobility.io/icons/charts/hello.png
 version: 1.0.0
 appVersion: 0.1.82
+maintainers:
+  - email: t.sousa@kigroup.de
+    name: Tiago Sousa

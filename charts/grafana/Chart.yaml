@@ -3,7 +3,7 @@ type: application
 name: grafana
 description: Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB(TM).
 home: https://github.com/cloudmobility/charts/tree/master/charts/grafana
-icon: https://github.com/cloudmobility/charts/tree/master/charts/grafana/icons/grafana-240x240.png?raw=true
+icon: https://cloudmobility.io/icons/charts/grafana.png
 version: 1.0.0
 appVersion: "8.0.4"
 dependencies:
