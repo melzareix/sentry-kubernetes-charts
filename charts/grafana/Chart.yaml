@@ -1,0 +1,15 @@
+apiVersion: v2
+type: application
+name: grafana
+description: Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB(TM).
+home: https://github.com/cloudmobility/charts/tree/master/charts/grafana
+icon: https://github.com/cloudmobility/charts/tree/master/charts/grafana/icons/grafana-240x240.png
+version: 1.0.0
+appVersion: "8.0.4"
+dependencies:
+  - name: grafana
+    version: "6.0.1"
+    repository: "https://charts.bitnami.com/bitnami"
+maintainers:
+  - email: t.sousa@kigroup.de
+    name: Tiago Sousa

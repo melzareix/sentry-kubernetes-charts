@@ -1,0 +1,15 @@
+grafana:
+  admin:
+    user: your-username
+    password: your-password
+  persistence:
+    size: 5Gi
+  ingress:
+    enabled: true
+    annotations:
+      ## If you are using the cmy-shared ingress class please see the documentation
+      ## With cmy-shared the hostname needs to follow a pattern
+      ## https://portal.cloudmobility.io/docs/en/cns/shared-ingress-controller.html
+      kubernetes.io/ingress.class: cmy-shared
+    hostname: <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
+    tls: <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
