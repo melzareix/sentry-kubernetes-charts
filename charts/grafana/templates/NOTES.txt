@@ -1,0 +1,4 @@
+1. Your application is available at:
+{{- if .Values.grafana.ingress.enabled }}
+  http{{ if $.Values.grafana.ingress.tls }}s{{ end }}://{{ .Values.grafana.ingress.hostname }}
+{{- end }}
