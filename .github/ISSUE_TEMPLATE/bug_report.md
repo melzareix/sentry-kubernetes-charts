@@ -1,6 +1,10 @@
 ---
-name: Bug report about: Create a report to help us improve title: ''
-labels: 'needs attention, bug' assignees: ''
+name: Bug report
+about: Create a report to help us improve
+title: "[BUG] chart@version"
+labels: bug, needs attention
+assignees: ''
+
 ---
 
 <!--
@@ -10,26 +14,24 @@ labels: 'needs attention, bug' assignees: ''
  -->
 
 **Which chart**:
-[name]@[version]
+name@version
 
-**Description**
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-A clear description of the bug or your error.
-
-**Steps to reproduce**
-
+**To Reproduce**
 Steps to reproduce the behavior:
 
 1. Go to '...'
 2. Click on '....'
+3. Scroll down to '....'
 4. See error
 
 **Expected behavior**
+A clear and concise description of what you expected to happen.
 
-Description of what you would expected to happen.
 
 **Version of Helm and Kubernetes**:
-
 - helm version
 
 <!--
@@ -42,16 +44,16 @@ $ helm version
 ```
 
 - kubectl version
-
 <!--
 In your terminal run:
 $ kubectl version
  -->
-
 ```
 (paste your output here)
 ```
 
-**Additional context**
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
 
+**Additional context**
 Add any other context about the problem here.
