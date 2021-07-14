@@ -25,7 +25,9 @@ Elasticsearch, OpenTSDB, Prometheus and InfluxDB(TM).
 This chart deploys a Grafana on a [Kubernetes](http://kubernetes.io) cluster using
 [Helm](https://helm.sh).
 
-cloudmobility charts are tailored [bitnami](https://github.com/bitnami/charts/tree/master/bitnami) charts that contain adjustments to the configuration, allowing you a one-click deployment experience in our [platform](https://portal.cloudmobility.io/).
+cloudmobility charts are tailored [bitnami](https://github.com/bitnami/charts/tree/master/bitnami) charts that contain
+adjustments to the configuration, allowing you a one-click deployment experience in
+our [platform](https://portal.cloudmobility.io/).
 
 > **Tip**: We recommend using and configuring this chart with a continuous delivery strategy.
 
@@ -108,13 +110,15 @@ controller. If you don't know how it works we strongly suggest reading the
 regarding this annotation and the features that it provides.
 > **Note**: You can also use a [dedicated ingress controller](https://portal.cloudmobility.io/docs/en/cns/dedicated-ingress-controller.html)
 
-| Parameter                                  | Description                                                                            | Default                                                             |
-|--------------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| `ingress.enabled`                          | Enable ingress controller resource                                                     | `true`                                                              |
-| `ingress.hostname`                         | Default host for the ingress resource. If specified as "*" no host rule is configured.   | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`  |
-| `ingress.path`                             | Default path for the ingress resource                                                  | `/`                                                                 |
-| `ingress.tls`                              | Create TLS Secret                                                                      | `true`                                                              |
-| `ingress.annotations`                      | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared]`                         |
+| Parameter                                  | Description                                                                              | Default                                                                                  |
+|--------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| `ingress.enabled`                          | Enable ingress controller resource                                                       | `true`                                                                                   |
+| `ingress.hostname`                         | Default host for the ingress resource. If specified as "*" no host rule is configured.   | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`                       |
+| `ingress.path`                             | Default path for the ingress resource                                                    | `/`                                                                                      |
+| `ingress.tls`                              | Create TLS Secret                                                                        | `true`                                                                                   |
+| `ingress.annotations`                      | Ingress annotations                                                                      | `[kubernetes.io/ingress.class: cmy-shared, cloudmobility.io/generate-hostname: "true"]`  |
+
+> **Note**: If you use the `cloudmobility.io/generate-hostname` your `ingress.hostname` value will be overwritten and tls will be enabled by default.
 
 ### Metrics parameters
 
