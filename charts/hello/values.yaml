@@ -2,8 +2,8 @@ image:
   repository: cloudmobility/hello-world
   tag: 1.0.0
   pullPolicy: IfNotPresent
+  pullSecrets: [ ]
 
-imagePullSecrets: [ ]
 nameOverride: ""
 fullnameOverride: ""
 
@@ -20,10 +20,10 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: my-ingress-controller
   hosts:
-    - host: my-sub-domain.cloud.eu1.cloudmobility.io
+    - host: <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
   tls:
     - hosts:
-        - my-sub-domain.cloud.eu1.cloudmobility.io
+        - <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
 
 resources:
   requests:

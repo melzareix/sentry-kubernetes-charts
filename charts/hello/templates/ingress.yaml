@@ -1,6 +1,7 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "hello.fullname" . -}}
-  {{- $isSharedIngressController := eq "cmy-shared" (get .Values.ingress.annotations "kubernetes.io/ingress.class")  -}}
+  {{- $isSharedIngressController := eq "cmy-shared" (get .Values.ingress.annotations "kubernetes.io/ingress.class") -}}
+  {{- $isAutomaticHostnameEnabled := eq "true" (get .Values.ingress.annotations "cloudmobility.io/generate-hostname") -}}
   {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
   {{- else -}}
@@ -17,8 +18,8 @@ metadata:
   {{- end }}
 spec:
   rules:
-    {{- if $isSharedIngressController}}
-    - host: "{{ $.Release.Name }}-{{ $.Release.Namespace }}-agile-dingo.cloud.eu1.cloudmobility.io"
+    {{- if and $isSharedIngressController $isAutomaticHostnameEnabled}}
+    - host:
     {{else}}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
@@ -31,9 +32,9 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $.Values.service.port | default 80 }}
   tls:
-    {{- if $isSharedIngressController}}
+    {{- if and $isSharedIngressController $isAutomaticHostnameEnabled}}
     - hosts:
-        - "{{ $.Release.Name }}-{{ $.Release.Namespace }}-agile-dingo.cloud.eu1.cloudmobility.io"
+        - ""
     {{else}}
     {{- range .Values.ingress.tls }}
     - hosts:
