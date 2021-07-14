@@ -54,8 +54,8 @@ The configuration of this chart is not meant to exhaustive and all the available
 
 | Parameter          | Description                                                          | Default                        |
 |--------------------|----------------------------------------------------------------------|--------------------------------|
-| `nameOverride`     | String to partially override fullname                        | `nil`                          |
-| `fullnameOverride` | String to fully override fullname                            | `nil`                          |
+| `nameOverride`     | String to partially override fullname                                | `nil`                          |
+| `fullnameOverride` | String to fully override fullname                                    | `nil`                          |
 
 | Parameter                                  | Description                                                 | Default                                                 |
 |--------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------|
