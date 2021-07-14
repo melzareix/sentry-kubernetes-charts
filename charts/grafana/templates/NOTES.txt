@@ -1,4 +1,5 @@
-1. Your application is available at:
-{{- if .Values.grafana.ingress.enabled }}
-  http{{ if $.Values.grafana.ingress.tls }}s{{ end }}://{{ .Values.grafana.ingress.hostname }}
+1. Get the application URL by running these commands:
+
+{{- if .Values.ingress.enabled }}
+    kubectl get ingress -o jsonpath="{.items[*].spec.rules[*].host}"
 {{- end }}

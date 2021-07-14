@@ -110,11 +110,11 @@ regarding this annotation and the features that it provides.
 
 | Parameter                                  | Description                                                                            | Default                                                             |
 |--------------------------------------------|----------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| `grafana.ingress.enabled`                  | Enable ingress controller resource                                                     | `true`                                                              |
-| `grafana.ingress.hostname`                 | Default host for the ingress resource. If specified as "*" no host rule is configured. | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`  |
-| `grafana.ingress.path`                     | Default path for the ingress resource                                                  | `/`                                                                 |
-| `grafana.ingress.tls`                      | Create TLS Secret                                                                      | `true`                                                              |
-| `grafana.ingress.annotations`              | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared]`                         |
+| `ingress.enabled`                          | Enable ingress controller resource                                                     | `true`                                                              |
+| `ingress.hostname`                         | Default host for the ingress resource. If specified as "*" no host rule is configured.   | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`  |
+| `ingress.path`                             | Default path for the ingress resource                                                  | `/`                                                                 |
+| `ingress.tls`                              | Create TLS Secret                                                                      | `true`                                                              |
+| `ingress.annotations`                      | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared]`                         |
 
 ### Metrics parameters
 
