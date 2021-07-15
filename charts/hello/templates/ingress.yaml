@@ -1,6 +1,5 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "hello.fullname" . -}}
-  {{- $isSharedIngressController := eq "cmy-shared" (get .Values.ingress.annotations "kubernetes.io/ingress.class")  -}}
   {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
   {{- else -}}
@@ -17,12 +16,8 @@ metadata:
   {{- end }}
 spec:
   rules:
-    {{- if $isSharedIngressController}}
-    - host: "{{ $.Release.Name }}-{{ $.Release.Namespace }}-agile-dingo.cloud.eu1.cloudmobility.io"
-    {{else}}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
-      {{- end }}
       {{- end }}
       http:
         paths:
@@ -31,15 +26,10 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $.Values.service.port | default 80 }}
   tls:
-    {{- if $isSharedIngressController}}
-    - hosts:
-        - "{{ $.Release.Name }}-{{ $.Release.Namespace }}-agile-dingo.cloud.eu1.cloudmobility.io"
-    {{else}}
     {{- range .Values.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
-          {{- end }}
           {{- end }}
           {{- end }}
   {{- end }}
