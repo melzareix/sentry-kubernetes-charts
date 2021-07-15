@@ -3,8 +3,7 @@
 ![hello-chart-badge](https://img.shields.io/badge/Hello%20Chart-1.0.0-green?style=flat-square&logo=mercedes)
 ---
 
-Hello is a chart that allow cloudmobility to easily proof the concept of applications inside the cloudmobility
-infrastructure. This chart not meant to be use for production systems since it's just a proof of concept.
+Hello is a helm chart that deploys a simple web app and can be used to test cloudmobility Applications Catalog. This chart is not meant to be used in production environments.
 
 ## Table of Contents
 
