@@ -1,7 +1,5 @@
 {{- if .Values.ingress.enabled -}}
   {{- $fullName := include "hello.fullname" . -}}
-  {{- $isSharedIngressController := eq "cmy-shared" (get .Values.ingress.annotations "kubernetes.io/ingress.class") -}}
-  {{- $isAutomaticHostnameEnabled := eq "true" (get .Values.ingress.annotations "cloudmobility.io/generate-hostname") -}}
   {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
   {{- else -}}
@@ -18,12 +16,8 @@ metadata:
   {{- end }}
 spec:
   rules:
-    {{- if and $isSharedIngressController $isAutomaticHostnameEnabled}}
-    - host:
-    {{else}}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
-      {{- end }}
       {{- end }}
       http:
         paths:
@@ -32,15 +26,10 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: {{ $.Values.service.port | default 80 }}
   tls:
-    {{- if and $isSharedIngressController $isAutomaticHostnameEnabled}}
-    - hosts:
-        - ""
-    {{else}}
     {{- range .Values.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
-          {{- end }}
           {{- end }}
           {{- end }}
   {{- end }}
