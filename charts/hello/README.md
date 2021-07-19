@@ -63,11 +63,17 @@ The configuration of this chart is not meant to exhaustive and all the available
 | `image.pullPolicy`                         | Hello image pull policy                                     | `IfNotPresent`                                          |
 | `image.pullSecrets`                        | Specify docker-registry secret names as an array            | `[]` (does not add image pull secrets to deployed pods) |
 
+### Deployment parameters
+
+| Parameter                                        | Description                                                                               | Default   |
+|--------------------------------------------------|-------------------------------------------------------------------------------------------|-----------|
+| `replicaCount`                                   | Sets the number of replicas for the the deployment when autoscaling is disabled           | `1`       |
+
 ### Autoscaling parameters
 
 | Parameter                                        | Description                                                                               | Default   |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------|-----------|
-| `autoscaling.enabled`                            | Enable autoscalling                                                                       | `true`    |
+| `autoscaling.enabled`                            | Enable autoscalling                                                                       | `false`   |
 | `autoscaling.minReplicas`                        | Sets the value for the min replicas                                                       | `1`       |
 | `autoscaling.maxReplicas`                        | Sets the value for the max replicas                                                       | `1`       |
 | `autoscaling.targetCPUUtilizationPercentage`     | Sets the utilization percentage CPU for autoscale                                         | `30`      |
