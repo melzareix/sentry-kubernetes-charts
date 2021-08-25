@@ -20,10 +20,10 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: my-ingress-controller
   hosts:
-    - host: <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
+    - host: ''
   tls:
     - hosts:
-        - <any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io
+        - ''
 
 resources:
   requests:
