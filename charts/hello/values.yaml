@@ -16,14 +16,12 @@ securityContext:
   runAsUser: 1993
 
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: my-ingress-controller
-  hosts:
-    - host: ''
-  tls:
-    - hosts:
-        - ''
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: my-ingress-controller
+  hostname: ''
+  path: '/'
+  tls: true
 
 resources:
   requests:
