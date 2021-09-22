@@ -25,7 +25,10 @@ spec:
               servicePort: {{ .Values.service.port | default 80 }}
   tls:
   {{- if .Values.ingress.tls }}
-    - hosts: 
-        - {{ .Values.ingress.hostname | quote }}
+    - hosts:
+        - {{ .Values.ingress.hostname | quote}}
+      {{- if .Values.ingress.hostname }}
+      secretName: "{{ $fullName }}-tls"
+      {{- end }}
   {{- end }}
 {{- end }}
