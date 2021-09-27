@@ -17,10 +17,10 @@ securityContext:
 
 ingress:
   enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: my-ingress-controller
-  hostname: ''
-  path: '/'
+  annotations: { }
+  ingressClassName: ""
+  hostname: ""
+  path: "/"
   tls: true
 
 resources:
