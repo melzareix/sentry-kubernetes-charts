@@ -18,7 +18,6 @@ securityContext:
 ingress:
   enabled: false
   annotations: { }
-  ingressClassName: "cmy-shared"
   hostname: ""
   path: "/"
   tls: true
