@@ -1,0 +1,15 @@
+apiVersion: v2
+type: application
+name: efk-stack
+description:
+home:
+icon:
+version: 0.0.1
+appVersion: "8.0.4"
+dependencies:
+  - name: fluentd
+    version: 0.2.11
+    repository: "https://fluent.github.io/helm-charts"
+maintainers:
+  - email: r.mota@kigroup.de
+    name: Rubem Mota

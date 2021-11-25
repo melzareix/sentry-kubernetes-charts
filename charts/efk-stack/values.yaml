@@ -1,0 +1,64 @@
+---
+fluentd:
+  kind: "Deployment"
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  service:
+    type: "ClusterIP"
+    annotations: {}
+    ports:
+      - name: "forwarder"
+        protocol: TCP
+        containerPort: 24224
+  dashboards:
+    enabled: false
+  autoscaling:
+    enabled: false
+  metrics:
+    serviceMonitor:
+      enabled: false
+  securityContext: {}
+
+  livenessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+  readinessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+  plugins:
+    - fluent-plugin-in-http
+  fileConfigs:
+    01_sources.conf: |-
+      <source>
+      @type http
+      port 9880
+      bind 0.0.0.0
+      body_size_limit 32m
+      keepalive_timeout 10s
+      </source>
+    04_outputs.conf: |-
+      <label @OUTPUT>
+        <match **>
+          @type elasticsearch
+          host "elasticsearch-master"
+          port 9200
+          path ""
+          user elastic
+          password changeme
+        </match>
+      </label>
