@@ -1,0 +1,5 @@
+1. Get the application URL by running these commands:
+
+{{- if .Values.ingress.enabled }}
+    kubectl get ingress -o jsonpath="{.items[*].spec.rules[*].host}"
+{{- end }}

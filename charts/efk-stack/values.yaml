@@ -1,10 +1,32 @@
 ---
+ingress:
+  enabled: true
+  tls: true
+  hostname: ""
+  services:
+    - serviceName: fluentd
+      servicePort: 9880
+      path: /fluentd
+    # - serviceName: elasticsearch
+    #   servicePort: 9881
+    #   path: /elasticsearch
+    # - serviceName: kibana
+    #   servicePort: 9881
+    #   path: /kibana
 fluentd:
   kind: "Deployment"
+  rbac:
+    create: true
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
+  resources:
+    requests:
+      cpu: 10m
+      memory: 256Mi
+    limits:
+      memory: 256Mi
   service:
     type: "ClusterIP"
     annotations: {}
@@ -12,6 +34,9 @@ fluentd:
       - name: "forwarder"
         protocol: TCP
         containerPort: 24224
+      - name: "loginput"
+        protocol: TCP
+        containerPort: 9880
   dashboards:
     enabled: false
   autoscaling:
@@ -19,29 +44,10 @@ fluentd:
   metrics:
     serviceMonitor:
       enabled: false
-  securityContext: {}
-
   livenessProbe:
-    httpGet:
-      path: /metrics
-      port: metrics
-    initialDelaySeconds: 10
-    periodSeconds: 10
-    timeoutSeconds: 1
-    successThreshold: 1
-    failureThreshold: 3
-
+    initialDelaySeconds: 20
   readinessProbe:
-    httpGet:
-      path: /metrics
-      port: metrics
-    initialDelaySeconds: 10
-    periodSeconds: 10
-    timeoutSeconds: 1
-    successThreshold: 1
-    failureThreshold: 3
-  plugins:
-    - fluent-plugin-in-http
+    initialDelaySeconds: 20
   fileConfigs:
     01_sources.conf: |-
       <source>
@@ -51,14 +57,57 @@ fluentd:
       body_size_limit 32m
       keepalive_timeout 10s
       </source>
+    02_filters.conf: |-
+      <label @KUBERNETES>
+        <match kubernetes.var.log.containers.fluentd**>
+          @type relabel
+          @label @FLUENT_LOG
+        </match>
+
+        # <match kubernetes.var.log.containers.**_kube-system_**>
+        #   @type null
+        #   @id ignore_kube_system_logs
+        # </match>
+
+        <filter kubernetes.**>
+          @type kubernetes_metadata
+          @id filter_kube_metadata
+          skip_labels false
+          skip_container_metadata false
+          skip_namespace_metadata true
+          skip_master_url true
+        </filter>
+
+        <match **>
+          @type relabel
+          @label @DISPATCH
+        </match>
+      </label>
+    03_dispatch.conf: |-
+      <label @DISPATCH>
+        <filter **>
+          @type prometheus
+          <metric>
+            name fluentd_input_status_num_records_total
+            type counter
+            desc The total number of incoming records
+            <labels>
+              tag ${tag}
+              hostname ${hostname}
+            </labels>
+          </metric>
+        </filter>
+
+        <match **>
+          @type relabel
+          @label @OUTPUT
+        </match>
+      </label>
+
     04_outputs.conf: |-
       <label @OUTPUT>
         <match **>
-          @type elasticsearch
-          host "elasticsearch-master"
-          port 9200
-          path ""
-          user elastic
-          password changeme
+          @type stdout
+          @id stdout
         </match>
       </label>

@@ -1,9 +1,9 @@
 apiVersion: v2
 type: application
 name: efk-stack
-description:
-home:
-icon:
+description: Cloud Mobility Stack for Elasticsearch
+home: https://github.com/cloudmobility/charts/tree/master/charts/efk-stack
+icon: https://cloudmobility.io/icons/charts/hello.png
 version: 0.0.1
 appVersion: "8.0.4"
 dependencies:

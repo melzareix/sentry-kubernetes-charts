@@ -9,21 +9,23 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-  {{- include "hello.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
   {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  ingressClassName: {{ .Values.ingress.ingressClassName | quote}}
   rules:
     - host: {{ .Values.ingress.hostname | quote }}
       http:
         paths:
-          - path: {{ .Values.ingress.path | default "/" }}
+          {{- range .Values.ingress.services }}
+          - path: {{ .path | quote}}
             pathType: Prefix
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ .Values.service.port | default 80 }}
+              serviceName: "{{ $fullName }}-{{ .serviceName }}"
+              servicePort: {{ .servicePort }}
+          {{- end}}
   tls:
     {{- if .Values.ingress.tls }}
     - hosts:
