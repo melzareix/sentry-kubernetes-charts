@@ -16,7 +16,13 @@ ingress:
 fluentd:
   kind: "Deployment"
   rbac:
-    create: true
+    create: false
+
+  # Configure podsecuritypolicy
+  # Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+  podSecurityPolicy:
+    enabled: false
+    annotations: {}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
@@ -44,18 +50,14 @@ fluentd:
   metrics:
     serviceMonitor:
       enabled: false
-  livenessProbe:
-    initialDelaySeconds: 20
-  readinessProbe:
-    initialDelaySeconds: 20
   fileConfigs:
     01_sources.conf: |-
       <source>
-      @type http
-      port 9880
-      bind 0.0.0.0
-      body_size_limit 32m
-      keepalive_timeout 10s
+        @type http
+        port 9880
+        bind 0.0.0.0
+        body_size_limit 32m
+        keepalive_timeout 10s
       </source>
     02_filters.conf: |-
       <label @KUBERNETES>
@@ -63,11 +65,6 @@ fluentd:
           @type relabel
           @label @FLUENT_LOG
         </match>
-
-        # <match kubernetes.var.log.containers.**_kube-system_**>
-        #   @type null
-        #   @id ignore_kube_system_logs
-        # </match>
 
         <filter kubernetes.**>
           @type kubernetes_metadata
@@ -85,19 +82,6 @@ fluentd:
       </label>
     03_dispatch.conf: |-
       <label @DISPATCH>
-        <filter **>
-          @type prometheus
-          <metric>
-            name fluentd_input_status_num_records_total
-            type counter
-            desc The total number of incoming records
-            <labels>
-              tag ${tag}
-              hostname ${hostname}
-            </labels>
-          </metric>
-        </filter>
-
         <match **>
           @type relabel
           @label @OUTPUT
