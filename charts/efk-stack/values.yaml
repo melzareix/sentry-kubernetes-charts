@@ -1,25 +1,32 @@
 ---
 ingress:
-  enabled: true
+  enabled: false
   tls: true
   hostname: ""
+  volumeClaimTemplate:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 10Gi
   services:
     - serviceName: fluentd
       servicePort: 9880
       path: /fluentd
-    # - serviceName: elasticsearch
-    #   servicePort: 9881
-    #   path: /elasticsearch
+      #- serviceName: elasticsearch
+      #servicePort: 9200
+      #path: /elasticsearch
     # - serviceName: kibana
     #   servicePort: 9881
     #   path: /kibana
+
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+
 fluentd:
   kind: "Deployment"
   rbac:
     create: false
-
-  # Configure podsecuritypolicy
-  # Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
   podSecurityPolicy:
     enabled: false
     annotations: {}
@@ -50,6 +57,10 @@ fluentd:
   metrics:
     serviceMonitor:
       enabled: false
+  livenessProbe:
+    initialDelaySeconds: 60
+  readinessProbe:
+    initialDelaySeconds: 60
   fileConfigs:
     01_sources.conf: |-
       <source>
@@ -59,27 +70,7 @@ fluentd:
         body_size_limit 32m
         keepalive_timeout 10s
       </source>
-    02_filters.conf: |-
-      <label @KUBERNETES>
-        <match kubernetes.var.log.containers.fluentd**>
-          @type relabel
-          @label @FLUENT_LOG
-        </match>
-
-        <filter kubernetes.**>
-          @type kubernetes_metadata
-          @id filter_kube_metadata
-          skip_labels false
-          skip_container_metadata false
-          skip_namespace_metadata true
-          skip_master_url true
-        </filter>
-
-        <match **>
-          @type relabel
-          @label @DISPATCH
-        </match>
-      </label>
+    02_filters.conf: ""
     03_dispatch.conf: |-
       <label @DISPATCH>
         <match **>
@@ -91,7 +82,8 @@ fluentd:
     04_outputs.conf: |-
       <label @OUTPUT>
         <match **>
-          @type stdout
-          @id stdout
+          @type elasticsearch
+          host "elasticsearch-master"
+          port 9200
         </match>
       </label>
