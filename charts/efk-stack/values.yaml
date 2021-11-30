@@ -69,21 +69,32 @@ fluentd:
         bind 0.0.0.0
         body_size_limit 32m
         keepalive_timeout 10s
+        @label @ELASTIC_INPUT
       </source>
-    02_filters.conf: ""
-    03_dispatch.conf: |-
-      <label @DISPATCH>
+    02_filters.conf: |-
+      <label @ELASTIC_INPUT>
         <match **>
           @type relabel
-          @label @OUTPUT
+          @label @ELASTIC_DISPATCH
+        </match>
+      </label>
+    03_dispatch.conf: |-
+      <label @ELASTIC_DISPATCH>
+        <match **>
+          @type relabel
+          @label @ELASTIC_OUTPUT
         </match>
       </label>
 
     04_outputs.conf: |-
-      <label @OUTPUT>
+      <label @ELASTIC_OUTPUT>
         <match **>
           @type elasticsearch
           host "elasticsearch-master"
           port 9200
+          @log_level debug
+        </match>
+        <match **>
+          @type stdout
         </match>
       </label>
