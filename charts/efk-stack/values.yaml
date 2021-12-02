@@ -3,11 +3,6 @@ ingress:
   enabled: false
   tls: true
   hostname: ""
-  volumeClaimTemplate:
-  accessModes: ["ReadWriteOnce"]
-  resources:
-    requests:
-      storage: 10Gi
   services:
     - serviceName: fluentd
       servicePort: 9880
@@ -27,13 +22,6 @@ kibana:
     kibana.yml: |
       server.basePath: "/kibana"
       server.rewriteBasePath: false
-  resources:
-    requests:
-      cpu: "500m"
-      memory: "1Gi"
-    limits:
-      cpu: "500m"
-      memory: "1Gi"
   readinessProbe: {}
 
 
@@ -45,17 +33,12 @@ elasticsearch:
   # and on the cluster we don't have that privilege
   sysctlInitContainer:
     enabled: false
-  resources:
-    requests:
-      cpu: "100m"
-      memory: "1000Mi"
-    limits:
-      cpu: "1000m"
-      memory: "2000Mi"
   livenessProbe:
     initialDelaySeconds: 60
+    timeoutSeconds: 20
   readinessProbe:
     initialDelaySeconds: 60
+    timeoutSeconds: 20
   persistence:
     enabled: true
     labels:
@@ -77,8 +60,10 @@ fluentd:
   kind: "Deployment"
   livenessProbe:
     initialDelaySeconds: 30
+    timeoutSeconds: 20
   readinessProbe:
     initialDelaySeconds: 30
+    timeoutSeconds: 20
   rbac:
     create: false
   podSecurityPolicy:
@@ -88,17 +73,6 @@ fluentd:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
-  resources:
-    requests:
-      cpu: 400m
-      memory: 1000Mi
-    limits:
-      cpu: 600m
-      memory: 1000Mi
-  livenessProbe:
-    initialDelaySeconds: 40
-  readinessProbe:
-    initialDelaySeconds: 40
   service:
     type: "ClusterIP"
     annotations: {}
