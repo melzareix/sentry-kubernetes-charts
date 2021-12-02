@@ -15,16 +15,70 @@ ingress:
       #- serviceName: elasticsearch
       #servicePort: 9200
       #path: /elasticsearch
-    # - serviceName: kibana
-    #   servicePort: 9881
-    #   path: /kibana
+    - serviceName: kibana
+      servicePort: 5601
+      path: /kibana(/|$)(.*)
+  accounts:
+    - elasticsearch_username: ""
+      elasticsearch_password: ""
+
+kibana:
+  kibanaConfig:
+    kibana.yml: |
+      server.basePath: "/kibana"
+      server.rewriteBasePath: false
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
+  readinessProbe: {}
+
+
 
 elasticsearch:
   replicas: 1
   minimumMasterNodes: 1
+  # disable sysctl init container because this needs to be run as root
+  # and on the cluster we don't have that privilege
+  sysctlInitContainer:
+    enabled: false
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "1000Mi"
+    limits:
+      cpu: "1000m"
+      memory: "2000Mi"
+  livenessProbe:
+    initialDelaySeconds: 60
+  readinessProbe:
+    initialDelaySeconds: 60
+  persistence:
+    enabled: true
+    labels:
+      enabled: true
+  volumeClaimTemplate:
+    storageClassName: standard
+    accessModes: ["ReadWriteOnce"]
+    resources:
+      requests:
+        storage: 10Gi
+  extraEnvs:
+    - name: ELASTIC_PASSWORD
+      value: "password"
+  esConfig:
+    elasticsearch.yml: |
+      xpack.security.enabled: true
 
 fluentd:
   kind: "Deployment"
+  livenessProbe:
+    initialDelaySeconds: 30
+  readinessProbe:
+    initialDelaySeconds: 30
   rbac:
     create: false
   podSecurityPolicy:
@@ -36,10 +90,15 @@ fluentd:
       maxUnavailable: 1
   resources:
     requests:
-      cpu: 10m
-      memory: 256Mi
+      cpu: 400m
+      memory: 1000Mi
     limits:
-      memory: 256Mi
+      cpu: 600m
+      memory: 1000Mi
+  livenessProbe:
+    initialDelaySeconds: 40
+  readinessProbe:
+    initialDelaySeconds: 40
   service:
     type: "ClusterIP"
     annotations: {}
@@ -57,10 +116,6 @@ fluentd:
   metrics:
     serviceMonitor:
       enabled: false
-  livenessProbe:
-    initialDelaySeconds: 60
-  readinessProbe:
-    initialDelaySeconds: 60
   fileConfigs:
     01_sources.conf: |-
       <source>

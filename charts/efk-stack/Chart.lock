@@ -1,9 +1,6 @@
 dependencies:
-- name: fluentd
-  repository: https://fluent.github.io/helm-charts
-  version: 0.2.11
 - name: elasticsearch
   repository: https://helm.elastic.co
   version: 7.15.0
-digest: sha256:97a93f0da959f3bcd1448e8b0f4471489fc11a85d6de4ccec6938985a147dfa6
-generated: "2021-11-29T16:50:22.698189Z"
+digest: sha256:cf8268e027d765f72b1925e7899d802d926d1c5929b73ac3b530d023c6984f1f
+generated: "2021-12-02T15:51:11.128987Z"

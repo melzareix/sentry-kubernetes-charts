@@ -10,3 +10,4 @@ ingress:
     ## If you want to automatically generate the hostname
     ## use the cloudmobility.io/generate-hostname annotation with true
     cloudmobility.io/generate-hostname: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2

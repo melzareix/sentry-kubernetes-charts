@@ -7,6 +7,9 @@ icon: https://cloudmobility.io/icons/charts/hello.png
 version: 0.0.1
 appVersion: "8.0.4"
 dependencies:
+  - name: kibana
+    version: "7.15.0"
+    repository: "https://helm.elastic.co"
   - name: fluentd
     version: 0.2.11
     repository: "https://fluent.github.io/helm-charts"
