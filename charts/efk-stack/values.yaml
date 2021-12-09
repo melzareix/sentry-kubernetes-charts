@@ -7,68 +7,51 @@ ingress:
     - serviceName: fluentd
       servicePort: 9880
       path: /fluentd
-      #- serviceName: elasticsearch
-      #servicePort: 9200
-      #path: /elasticsearch
-    - serviceName: kibana
+    - serviceName: opensearch-dashboards
       servicePort: 5601
-      path: /kibana(/|$)(.*)
-  accounts:
-    - elasticsearch_username: ""
-      elasticsearch_password: ""
+      path: /dashboard
 
-kibana:
-  kibanaConfig:
-    kibana.yml: |
-      server.basePath: "/kibana"
-      server.rewriteBasePath: false
+opensearch-dashboards:
+  rbac:
+    create: false
+  config:
+    opensearch_dashboards.yml: |
+      plugins.security.disabled: true
+      erver.ssl.enabled: false
+      server.basePath: "/dashboard"
+      server.rewriteBasePath: true
   readinessProbe: {}
 
-
-
-elasticsearch:
+opensearch:
   replicas: 1
   minimumMasterNodes: 1
-  # disable sysctl init container because this needs to be run as root
-  # and on the cluster we don't have that privilege
-  sysctlInitContainer:
-    enabled: false
-  livenessProbe:
-    initialDelaySeconds: 60
-    timeoutSeconds: 20
-  readinessProbe:
-    initialDelaySeconds: 60
-    timeoutSeconds: 20
+  networkPolicy:
+    create: false
+  podSecurityPolicy:
+    create: false
+    spec:
+      privileged: true
   persistence:
     enabled: true
-    labels:
-      enabled: true
-  volumeClaimTemplate:
-    storageClassName: standard
-    accessModes: ["ReadWriteOnce"]
-    resources:
-      requests:
-        storage: 10Gi
-  extraEnvs:
-    - name: ELASTIC_PASSWORD
-      value: "password"
-  esConfig:
-    elasticsearch.yml: |
-      xpack.security.enabled: true
+    # Set to false to disable the `fsgroup-volume` initContainer that will update permissions on the persistent disk.
+    enableInitChown: false
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "100Mi"
+    limits:
+      cpu: "400m"
+      memory: "1Gi"
+  config:
+    opensearch.yml: |
+      plugins.security.disabled: true
 
 fluentd:
   kind: "Deployment"
-  livenessProbe:
-    initialDelaySeconds: 30
-    timeoutSeconds: 20
-  readinessProbe:
-    initialDelaySeconds: 30
-    timeoutSeconds: 20
   rbac:
     create: false
   podSecurityPolicy:
     enabled: false
-    annotations: {}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
@@ -83,6 +66,9 @@ fluentd:
       - name: "loginput"
         protocol: TCP
         containerPort: 9880
+      - name: "probeport"
+        protocol: TCP
+        containerPort: 9881
   dashboards:
     enabled: false
   autoscaling:
@@ -90,6 +76,41 @@ fluentd:
   metrics:
     serviceMonitor:
       enabled: false
+  livenessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 2
+  readinessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 30
+    periodSeconds: 30
+    timeoutSeconds: 2
+  securityContext:
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 1000
+  volumes:
+    - name: etcfluentd-main
+      configMap:
+        name: fluentd-main
+        defaultMode: 0777
+    - name: etcfluentd-config
+      configMap:
+        name: fluentd-config
+        defaultMode: 0777
+  volumeMounts:
+    - name: etcfluentd-main
+      mountPath: /etc/fluent
+    - name: etcfluentd-config
+      mountPath: /etc/fluent/config.d/
   fileConfigs:
     01_sources.conf: |-
       <source>
@@ -99,6 +120,11 @@ fluentd:
         body_size_limit 32m
         keepalive_timeout 10s
         @label @ELASTIC_INPUT
+      </source>
+      <source>
+        @type http
+        port 9881
+        bind 0.0.0.0
       </source>
     02_filters.conf: |-
       <label @ELASTIC_INPUT>
@@ -119,11 +145,17 @@ fluentd:
       <label @ELASTIC_OUTPUT>
         <match **>
           @type elasticsearch
-          host "elasticsearch-master"
+          #scheme http
+          host "opensearch-cluster-master"
           port 9200
           @log_level debug
-        </match>
-        <match **>
-          @type stdout
+          index_name fluentd.${tag}.%Y%m%d
+          #user logstash
+          #password logstash
+          #ssl_verify false
+          #ssl_version TLSv1_2
+          #logstash_format true
+          #enable_ilm true
+          flush_interval 10s
         </match>
       </label>
