@@ -2,7 +2,6 @@
 ingress:
   enabled: true
   ingressClassName: cmy-shared
-  httpBasicAuth: 'YWRtaW46JGFwcjEkSWxiRlgxeXAkbTJ3ZXpSUUE3L1EuY3o2YUppQTZ6Lwo='
   annotations:
     ## If you are using the cmy-shared ingress class please see the documentation
     ## With cmy-shared the hostname needs to follow a pattern

@@ -1,11 +1,11 @@
 apiVersion: v2
 type: application
-name: efk-stack
-description: Cloud Mobility Stack for Elasticsearch
+name: opensearch-stack
+description: Cloud Mobility Stack for OpenSearch
 home: https://github.com/cloudmobility/charts/tree/master/charts/efk-stack
 icon: https://cloudmobility.io/icons/charts/opensearch.png
 version: 0.0.1
-appVersion: '8.0.4'
+appVersion: '0.0.1'
 dependencies:
   - name: opensearch
     version: '1.5.4'
