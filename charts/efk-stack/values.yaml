@@ -1,25 +1,36 @@
 ---
 ingress:
-  enabled: false
+  enabled: true
   tls: true
   hostname: ""
+  httpBasicAuth: ""
   services:
     - serviceName: fluentd
       servicePort: 9880
       path: /fluentd
     - serviceName: opensearch-dashboards
       servicePort: 5601
-      path: /dashboard
+      path: /opensearch-dashboards
+
 
 opensearch-dashboards:
+  image: "rubemlrm/opensearch-dashboards-no-security"
+  opensearchHosts: "http://opensearch-cluster-master:9200"
   rbac:
     create: false
   config:
-    opensearch_dashboards.yml: |
-      plugins.security.disabled: true
-      erver.ssl.enabled: false
-      server.basePath: "/dashboard"
-      server.rewriteBasePath: true
+    opensearch_dashboards.yml:
+      server:
+        name: opensearch-dashboards
+        basePath: "/opensearch-dashboards"
+        rewriteBasePath: true
+        ssl:
+          enabled: false
+          certificate: ""
+          key: ""
+      opensearch:
+        ssl:
+          verificationMode: none
   readinessProbe: {}
 
 opensearch:
@@ -45,7 +56,22 @@ opensearch:
   config:
     opensearch.yml: |
       plugins.security.disabled: true
-
+  lifecycle:
+    postStart:
+      exec:
+        command:
+          - bash
+          - -c
+          - |
+            #!/bin/bash
+            # Add a template to adjust number of shards/replicas1
+            TEMPLATE_NAME=cmy_logging
+            INDEX_PATTERN="*"
+            SHARD_COUNT=1
+            REPLICA_COUNT=0
+            ES_URL=http://localhost:9200
+            while [[ "$(curl -s -o /dev/null -w '%{http_code}\n' $ES_URL)" != "200" ]]; do sleep 1; done
+            curl -XPUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d'{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
 fluentd:
   kind: "Deployment"
   rbac:
@@ -149,13 +175,16 @@ fluentd:
           host "opensearch-cluster-master"
           port 9200
           @log_level debug
-          index_name fluentd.${tag}.%Y%m%d
+          index_name fluentd-${tag}-%Y.%m.%d
+          <buffer tag, time>
+            timekey 1h # chunks per hours ("3600" also available)
+          </buffer>
           #user logstash
           #password logstash
           #ssl_verify false
           #ssl_version TLSv1_2
-          #logstash_format true
-          #enable_ilm true
+          logstash_format false
+          enable_ilm true
           flush_interval 10s
         </match>
       </label>
