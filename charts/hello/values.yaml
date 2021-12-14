@@ -2,7 +2,7 @@ image:
   repository: cloudmobility/hello-world
   tag: 1.0.0
   pullPolicy: IfNotPresent
-  pullSecrets: [ ]
+  pullSecrets: []
 
 nameOverride: ""
 fullnameOverride: ""
@@ -16,8 +16,8 @@ securityContext:
   runAsUser: 1993
 
 ingress:
-  enabled: false
-  annotations: { }
+  enabled: true
+  annotations: {}
   hostname: ""
   path: "/"
   tls: true
