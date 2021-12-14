@@ -8,10 +8,10 @@ version: 0.0.1
 appVersion: '8.0.4'
 dependencies:
   - name: opensearch
-    version: '1.5.2'
+    version: '1.5.4'
     repository: 'https://rubemlrm.com/helm-charts/'
   - name: opensearch-dashboards
-    version: '1.1.0'
+    version: '1.1.1'
     repository: 'https://opensearch-project.github.io/helm-charts/'
   - name: fluentd
     version: 0.3.1

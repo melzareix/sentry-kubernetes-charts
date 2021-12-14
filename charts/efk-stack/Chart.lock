@@ -1,12 +1,12 @@
 dependencies:
 - name: opensearch
   repository: https://rubemlrm.com/helm-charts/
-  version: 1.5.2
+  version: 1.5.4
 - name: opensearch-dashboards
   repository: https://opensearch-project.github.io/helm-charts/
-  version: 1.1.0
+  version: 1.1.1
 - name: fluentd
   repository: https://fluent.github.io/helm-charts
   version: 0.3.1
-digest: sha256:62ff36b28d4ff8922ae00cd31e9d9c707ce0fae56265ac6095e9eef28d03b01d
-generated: "2021-12-09T15:09:25.21848Z"
+digest: sha256:e10bcfb2a7965ac321d8baa633f55e2677892c741cb2dcd9d07cbccacfc1bdb4
+generated: "2021-12-14T16:33:07.350934Z"
