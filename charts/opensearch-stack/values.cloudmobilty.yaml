@@ -3,10 +3,14 @@ ingress:
   enabled: true
   ingressClassName: cmy-shared
   annotations:
-    ## If you are using the cmy-shared ingress class please see the documentation
-    ## With cmy-shared the hostname needs to follow a pattern
-    ## https://portal.cloudmobility.io/docs/en/cns/shared-ingress-controller.html
-    #kubernetes.io/ingress.class: cmy-shared
     ## If you want to automatically generate the hostname
     ## use the cloudmobility.io/generate-hostname annotation with true
     cloudmobility.io/generate-hostname: "true"
+opensearch:
+  users:
+    logging:
+      user: ""
+      password: ""
+    dashboard:
+      user: ""
+      password: ""

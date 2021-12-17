@@ -1,8 +1,9 @@
-{{- if .Values.ingress.enabled -}}
-  {{- $fullName := include "efk.fullname" . -}}
-  {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+---
+{{- if .Values.ingress.enabled }}
+{{- $fullName := include "efk.fullname" . }}
+{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion }}
 apiVersion: networking.k8s.io/v1beta1
-  {{- else -}}
+  {{- else }}
 apiVersion: extensions/v1beta1
   {{- end }}
 kind: Ingress

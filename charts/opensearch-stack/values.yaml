@@ -3,7 +3,6 @@ ingress:
   enabled: false
   tls: true
   hostname: ""
-  httpBasicAuth: ""
   services:
     - serviceName: fluentd
       servicePort: 9880
@@ -12,29 +11,10 @@ ingress:
       servicePort: 5601
       path: /opensearch-dashboards
 
-
 opensearch-dashboards:
   opensearchHosts: "https://opensearch-cluster-master:9200"
   rbac:
     create: false
-  config:
-    opensearch_dashboards.yml:
-      server:
-        name: opensearch-dashboards
-        basePath: "/opensearch-dashboards"
-        rewriteBasePath: true
-        ssl:
-          enabled: true
-          certificate: /usr/share/opensearch-dashboards/config/custom/ssl/client.pem
-          key: /usr/share/opensearch-dashboards/config/custom/ssl/client-key.pem
-      opensearch:
-        ssl:
-          certificate: "/usr/share/opensearch-dashboards/config/custom/ssl/admin.pem"
-          key: "/usr/share/opensearch-dashboards/config/custom/ssl/admin-key.pem"
-          certificateAuthorities: /usr/share/opensearch-dashboards/config/custom/ssl/root-ca.pem
-          verificationMode: none
-        logQueries: true
-
   extraVolumes:
     - name: ssl-folder
       persistentVolumeClaim:
@@ -42,8 +22,33 @@ opensearch-dashboards:
   extraVolumeMounts:
     - name: ssl-folder
       mountPath: /usr/share/opensearch-dashboards/config/custom/ssl
-
+  opensearchAccount:
+    secret: "cmy-opensearch-account-config"
+  config:
+    opensearch_dashboards.yml:
+      server:
+        name: opensearch-dashboards
+        basePath: "/opensearch-dashboards"
+        rewriteBasePath: true
+        ssl.enabled: false
+      opensearch:
+        hosts: ["https://opensearch-cluster-master:9200"]
+        ssl:
+          certificate: "/usr/share/opensearch-dashboards/config/custom/ssl/admin.pem"
+          key: "/usr/share/opensearch-dashboards/config/custom/ssl/admin-key.pem"
+          certificateAuthorities: /usr/share/opensearch-dashboards/config/custom/ssl/root-ca.pem
+          verificationMode: none
+        logQueries: true
+      logging:
+        verbose: true
 opensearch:
+  users:
+    logging:
+      user: ""
+      password: ""
+    dashboard:
+      user: ""
+      password: ""
   replicas: 1
   minimumMasterNodes: 1
   networkPolicy:
@@ -54,20 +59,19 @@ opensearch:
       privileged: true
   persistence:
     enabled: true
-    # Set to false to disable the `fsgroup-volume` initContainer that will update permissions on the persistent disk.
     enableInitChown: false
   resources:
     requests:
       cpu: "250m"
-      memory: "100Mi"
+      memory: "4Gi"
     limits:
-      cpu: "400m"
-      memory: "1Gi"
+      cpu: "2000m"
+      memory: "8Gi"
   config:
     opensearch.yml: |
       cluster.name: opensearch-cluster
       # Bind to all interfaces because we don't know what IP address Docker will assign to us.
-      network.host: 0.0.0.0
+      #network.host: 0.0.0.0
       plugins:
         security:
           ssl:
@@ -83,7 +87,7 @@ opensearch:
               pemtrustedcas_filepath: /usr/share/opensearch/config/custom/ssl/root-ca.pem
           authcz:
             admin_dn:
-              - 'C=CMY,ST=DAIMLER,L=Lisbon,O=ORG,OU=UNIT,CN=ADMIN'
+              - 'CN=localhost,OU=UNIT,O=ORG,O=Lisbon,ST=DAIMLER,C=CM'
           allow_unsafe_democertificates: true
           allow_default_init_securityindex: true
           audit.type: internal_opensearch
@@ -106,6 +110,12 @@ opensearch:
                 ".opendistro-notebooks",
                 ".opendistro-asynchronous-search-response*",
               ]
+  securityConfig:
+    configSecret: cmy-opensearch-security-config
+    internalUsersSecret: cmy-opensearch-internal-users-config
+    rolesSecret: cmy-opensearch-roles-config
+    rolesMappingSecret: cmy-opensearch-roles-mapping-config
+    tenantsSecret: cmy-opensearch-tenants-config
   lifecycle:
     postStart:
       exec:
@@ -114,13 +124,30 @@ opensearch:
           - -c
           - |
             #!/bin/bash
+            sleep 20
+            updatedFlag=0
+            while [[ "$updatedFlag" -eq 0  ]]; do
+              JAVA_HOME=/usr/share/opensearch/jdk /usr/share/opensearch/plugins/opensearch-security/tools/securityadmin.sh \
+                          -cacert /usr/share/opensearch/config/custom/ssl/root-ca.pem \
+                          -cert /usr/share/opensearch/config/custom/ssl/admin.pem \
+                          -key /usr/share/opensearch/config/custom/ssl/admin-key.pem \
+                          -cd /usr/share/opensearch/plugins/opensearch-security/securityconfig/ \
+                          -icl \
+                          -nhnv >> /usr/share/opensearch/update_pass.log
+              if [[ $? -eq 0 ]]; then
+                updatedFlag=1
+                echo "flag $updatedFlag updated" >> /usr/share/opensearch/update_pass.log
+              fi
+              sleep 10
+            done
             # Add a template to adjust number of shards/replicas1
             TEMPLATE_NAME=cmy_logging
             INDEX_PATTERN="*"
             SHARD_COUNT=1
             REPLICA_COUNT=0
-            ES_URL=http://localhost:9200
-            #while [[ "$(curl -s -o /dev/null -w '%{http_code}\n' $ES_URL)" != "200" ]]; do sleep 1; done
+            ES_URL=https://localhost:9200
+            ES_INDEX_URL=https://localhost:9300
+            #while [[ "$(curl -k -I -o /dev/null -w '%{http_code}\n' --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem $ES_URL)" != "200" ]]; do sleep 1; done
             #curl --user admin:admin -XPUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d'{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
   extraInitContainers:
     - name: ssl-init
@@ -128,10 +155,10 @@ opensearch:
       command: ["sh", "-c"]
       args:
         - openssl genrsa -out /tmp/ssl/root-ca-key.pem 2048;
-          openssl req -new -x509 -key /tmp/ssl/root-ca-key.pem -subj "/C=CM/ST=DAIMLER/L=Lisbon/O=ORG/OU=UNIT/CN=ROOT" -out /tmp/ssl/root-ca.pem -days 730;
+          openssl req -new -x509 -key /tmp/ssl/root-ca-key.pem -subj "/C=CM/ST=DAIMLER/L=Lisbon/O=ORG/OU=UNIT/CN=localhost" -out /tmp/ssl/root-ca.pem -days 730;
           openssl genrsa -out /tmp/ssl/admin-key-temp.pem 2048;
           openssl pkcs8 -inform PEM -outform PEM -in /tmp/ssl/admin-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out /tmp/ssl/admin-key.pem;
-          openssl req -new -key /tmp/ssl/admin-key.pem -subj "/C=CM/ST=DAIMLER/O=Lisbon/O=ORG/OU=UNIT/CN=ADMIN" -out /tmp/ssl/admin.csr;
+          openssl req -new -key /tmp/ssl/admin-key.pem -subj "/C=CM/ST=DAIMLER/O=Lisbon/O=ORG/OU=UNIT/CN=localhost" -out /tmp/ssl/admin.csr;
           openssl x509 -req -in /tmp/ssl/admin.csr -CA /tmp/ssl/root-ca.pem -CAkey /tmp/ssl/root-ca-key.pem -CAcreateserial -sha256 -out /tmp/ssl/admin.pem -days 730;
           openssl genrsa -out /tmp/ssl/client-key-temp.pem 2048;
           openssl pkcs8 -inform PEM -outform PEM -in /tmp/ssl/client-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out /tmp/ssl/client-key.pem;
@@ -141,8 +168,8 @@ opensearch:
           rm /tmp/ssl/admin-key-temp.pem;
           rm /tmp/ssl/admin.csr
       volumeMounts:
-      - name: ssl-folder
-        mountPath: /tmp/ssl
+        - name: ssl-folder
+          mountPath: /tmp/ssl
   extraVolumes:
     - name: ssl-folder
       persistentVolumeClaim:
@@ -150,6 +177,7 @@ opensearch:
   extraVolumeMounts:
     - name: ssl-folder
       mountPath: /usr/share/opensearch/config/custom/ssl
+
 fluentd:
   kind: "Deployment"
   rbac:
@@ -207,62 +235,11 @@ fluentd:
         name: fluentd-main
         defaultMode: 0777
     - name: etcfluentd-config
-      configMap:
-        name: fluentd-config
+      secret:
+        secretName: cmy-fluentd-configs
         defaultMode: 0777
   volumeMounts:
     - name: etcfluentd-main
       mountPath: /etc/fluent
     - name: etcfluentd-config
       mountPath: /etc/fluent/config.d/
-  fileConfigs:
-    01_sources.conf: |-
-      <source>
-        @type http
-        port 9880
-        bind 0.0.0.0
-        body_size_limit 32m
-        keepalive_timeout 10s
-        @label @ELASTIC_INPUT
-      </source>
-      <source>
-        @type http
-        port 9881
-        bind 0.0.0.0
-      </source>
-    02_filters.conf: |-
-      <label @ELASTIC_INPUT>
-        <match **>
-          @type relabel
-          @label @ELASTIC_DISPATCH
-        </match>
-      </label>
-    03_dispatch.conf: |-
-      <label @ELASTIC_DISPATCH>
-        <match **>
-          @type relabel
-          @label @ELASTIC_OUTPUT
-        </match>
-      </label>
-
-    04_outputs.conf: |-
-      <label @ELASTIC_OUTPUT>
-        <match **>
-          @type elasticsearch
-          scheme https
-          host "opensearch-cluster-master"
-          port 9200
-          @log_level debug
-          index_name fluentd-${tag}-%Y.%m.%d
-          <buffer tag, time>
-            timekey 1h # chunks per hours ("3600" also available)
-          </buffer>
-          user admin
-          password admin
-          ssl_verify false
-          ssl_version TLSv1_2
-          logstash_format false
-          enable_ilm true
-          flush_interval 10s
-        </match>
-      </label>

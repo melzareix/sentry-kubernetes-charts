@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cmy-opensearch-account-config
+  labels: {{- include "efk.labels" . | nindent 4 }}
+type: Opaque
+data:
+  username:  {{ required "A valid Values.opensearch.users.dashboard.user entry required!" .Values.opensearch.users.dashboard.user | b64enc}}
+  password: {{ required "A valid Values.opensearch.users.dashboard.password entry required!" .Values.opensearch.users.dashboard.password | b64enc  }}
+  cookie: {{ uuidv4 | b64enc }}

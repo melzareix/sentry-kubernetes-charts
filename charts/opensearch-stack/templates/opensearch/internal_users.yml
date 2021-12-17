@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cmy-opensearch-internal-users-config
+  labels: {{- include "efk.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  internal_users.yml: |
+    _meta:
+      type: 'internalusers'
+      config_version: 2
+    {{ .Values.opensearch.users.dashboard.user }}:
+      hash: {{ bcrypt .Values.opensearch.users.dashboard.password | quote }}
+      reserved: true
+      backend_roles:
+        - 'admin'
+    {{ .Values.opensearch.users.logging.user }}:
+      hash: {{ bcrypt .Values.opensearch.users.logging.password | quote }}
+      reserved: false
+      hidden: false
+      backend_roles:
+        - "admin"
