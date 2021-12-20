@@ -19,6 +19,30 @@ stringData:
     security_rest_api_access:
       reserved: true
 
+    fluentd:
+      reserved: true
+      cluster_permissions:
+        - 'cluster:monitor/main'
+      index_permissions:
+        - index_patterns:
+          - 'fluentd-*'
+          allowed_actions:
+            - 'indices:admin/create'
+            - 'indices:data/write/index'
+            - 'indices:data/write/bulk'
+            - 'indices:data/write/bulk*'
+            - 'indices:admin/mapping/put'
+
+    template_user:
+      reserved: true
+      index_permissions:
+        - index_patterns:
+          - 'fluentd-*'
+          allowed_actions:
+            - 'indices:admin/index_template/get'
+            - 'indices:admin/index_template/put'
+
+
     # Allows users to view monitors, destinations and alerts
     alerting_read_access:
       reserved: true

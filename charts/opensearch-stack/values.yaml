@@ -13,6 +13,21 @@ ingress:
 
 opensearch-dashboards:
   opensearchHosts: "https://opensearch-cluster-master:9200"
+  extraInitContainers:
+    - name: ssl-init
+      image: bash
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+      command: ["/usr/local/bin/bash"]
+      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
+      volumeMounts:
+        - name: ssl-folder
+          mountPath: /tmp/ssl
   rbac:
     create: false
   extraVolumes:
@@ -41,6 +56,7 @@ opensearch-dashboards:
         logQueries: true
       logging:
         verbose: true
+
 opensearch:
   users:
     logging:
@@ -51,6 +67,28 @@ opensearch:
       password: ""
   replicas: 1
   minimumMasterNodes: 1
+  extraInitContainers:
+    - name: ssl-init
+      image: bash
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+      command: ["/usr/local/bin/bash"]
+      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
+      volumeMounts:
+        - name: ssl-folder
+          mountPath: /tmp/ssl
+  extraVolumes:
+    - name: ssl-folder
+      persistentVolumeClaim:
+        claimName: monitoring-certs
+  extraVolumeMounts:
+    - name: ssl-folder
+      mountPath: /usr/share/opensearch/config/custom/ssl
   networkPolicy:
     create: false
   podSecurityPolicy:
@@ -138,7 +176,7 @@ opensearch:
                 updatedFlag=1
                 echo "flag $updatedFlag updated" >> /usr/share/opensearch/update_pass.log
               fi
-              sleep 10
+              sleep 2
             done
             # Add a template to adjust number of shards/replicas1
             TEMPLATE_NAME=cmy_logging
@@ -146,37 +184,9 @@ opensearch:
             SHARD_COUNT=1
             REPLICA_COUNT=0
             ES_URL=https://localhost:9200
-            ES_INDEX_URL=https://localhost:9300
-            #while [[ "$(curl -k -I -o /dev/null -w '%{http_code}\n' --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem $ES_URL)" != "200" ]]; do sleep 1; done
-            #curl --user admin:admin -XPUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d'{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
-  extraInitContainers:
-    - name: ssl-init
-      image: nginx
-      command: ["sh", "-c"]
-      args:
-        - openssl genrsa -out /tmp/ssl/root-ca-key.pem 2048;
-          openssl req -new -x509 -key /tmp/ssl/root-ca-key.pem -subj "/C=CM/ST=DAIMLER/L=Lisbon/O=ORG/OU=UNIT/CN=localhost" -out /tmp/ssl/root-ca.pem -days 730;
-          openssl genrsa -out /tmp/ssl/admin-key-temp.pem 2048;
-          openssl pkcs8 -inform PEM -outform PEM -in /tmp/ssl/admin-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out /tmp/ssl/admin-key.pem;
-          openssl req -new -key /tmp/ssl/admin-key.pem -subj "/C=CM/ST=DAIMLER/O=Lisbon/O=ORG/OU=UNIT/CN=localhost" -out /tmp/ssl/admin.csr;
-          openssl x509 -req -in /tmp/ssl/admin.csr -CA /tmp/ssl/root-ca.pem -CAkey /tmp/ssl/root-ca-key.pem -CAcreateserial -sha256 -out /tmp/ssl/admin.pem -days 730;
-          openssl genrsa -out /tmp/ssl/client-key-temp.pem 2048;
-          openssl pkcs8 -inform PEM -outform PEM -in /tmp/ssl/client-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out /tmp/ssl/client-key.pem;
-          openssl req -new -key /tmp/ssl/client-key.pem -subj "/C=CM/ST=DAIMLER/O=Lisbon/O=ORG/OU=UNIT/CN=CLIENT" -out /tmp/ssl/client.csr;
-          openssl x509 -req -in /tmp/ssl/client.csr -CA /tmp/ssl/root-ca.pem -CAkey /tmp/ssl/root-ca-key.pem -CAcreateserial -sha256 -out /tmp/ssl/client.pem -days 730;
-
-          rm /tmp/ssl/admin-key-temp.pem;
-          rm /tmp/ssl/admin.csr
-      volumeMounts:
-        - name: ssl-folder
-          mountPath: /tmp/ssl
-  extraVolumes:
-    - name: ssl-folder
-      persistentVolumeClaim:
-        claimName: monitoring-certs
-  extraVolumeMounts:
-    - name: ssl-folder
-      mountPath: /usr/share/opensearch/config/custom/ssl
+            while [[ "$(curl -k -I -o /dev/null -w '%{http_code}\n' --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem $ES_URL)" != "200" ]]; do sleep 1; done
+            echo "Creating template $TEMPLATE_NAME"
+            curl -k --user template_user:template_pass --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem --X PUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d '{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
 
 fluentd:
   kind: "Deployment"
@@ -212,14 +222,14 @@ fluentd:
     httpGet:
       path: /metrics
       port: metrics
-    initialDelaySeconds: 30
+    initialDelaySeconds: 90
     periodSeconds: 30
     timeoutSeconds: 2
   readinessProbe:
     httpGet:
       path: /metrics
       port: metrics
-    initialDelaySeconds: 30
+    initialDelaySeconds: 90
     periodSeconds: 30
     timeoutSeconds: 2
   securityContext:
@@ -243,3 +253,10 @@ fluentd:
       mountPath: /etc/fluent
     - name: etcfluentd-config
       mountPath: /etc/fluent/config.d/
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"

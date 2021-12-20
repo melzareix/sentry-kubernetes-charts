@@ -17,7 +17,13 @@ stringData:
         - 'admin'
     {{ .Values.opensearch.users.logging.user }}:
       hash: {{ bcrypt .Values.opensearch.users.logging.password | quote }}
-      reserved: false
+      reserved: true
       hidden: false
       backend_roles:
-        - "admin"
+        - "fluentd"
+    template_user:
+      hash: {{ bcrypt "template_pass" | quote }}
+      reserved: true
+      hidden: false
+      backend_roles:
+        - "template_user"

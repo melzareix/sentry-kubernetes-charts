@@ -71,50 +71,53 @@ chart please have a look on those links:
 
 ### Parameters
 
-| Parameter                                | Description                                                          | Default                        |
-|------------------------------------------|----------------------------------------------------------------------|--------------------------------|
-| `fluentd.nameOverride`                   | String to partially override fluentd.fullname                        | `nil`                          |
-| `fluentd.fullnameOverride`               | String to fully override fluentd.fullname                            | `nil`                          |
-| `opensearch.nameOverride`                | String to partially override opensearch.fullname                     | `nil`                          |
-| `opensearch.fullnameOverride`            | String to fully override opensearch.fullname                         | `nil`                          |
-| `opensearch-dashboards.nameOverride`     | String to partially override opensearch-dashboards.fullname          | `nil`                          |
-| `opensearch-dashboards.fullnameOverride` | String to fully override opensearch-dashboards.fullname              | `nil`                          |
-
+| Parameter                                | Description                                                                   | Default |
+| ---------------------------------------- | ----------------------------------------------------------------------------- | ------- |
+| `fluentd.nameOverride`                   | String to partially override fluentd.fullname                                 | `nil`   |
+| `fluentd.fullnameOverride`               | String to fully override fluentd.fullname                                     | `nil`   |
+| `opensearch.nameOverride`                | String to partially override opensearch.fullname                              | `nil`   |
+| `opensearch.fullnameOverride`            | String to fully override opensearch.fullname                                  | `nil`   |
+| `opensearch-dashboards.nameOverride`     | String to partially override opensearch-dashboards.fullname                   | `nil`   |
+| `opensearch-dashboards.fullnameOverride` | String to fully override opensearch-dashboards.fullname                       | `nil`   |
+| `opensearch.users.dashboard.user`        | Opensearch user (required)                                                    | `nil`   |
+| `opensearch.users.dashboard.password`    | Opensearch password that will be encrypted with bcrypt on template (required) | `nil`   |
+| `opensearch.users.logging.user`          | Fluentd user that will communicate with elastic search (required)             | `nil`   |
+| `opensearch.users.logging.password`      | Fluentd password that will be encrypted with bcrypt on template  (required)   | `nil`   |
 
 
 ### Deployment parameters
 
-| Parameter                                  | Description                                                              | Default                        |
-|--------------------------------------------|--------------------------------------------------------------------------|--------------------------------|
-| `fluentd.replicaCount`                     | Number of FluentD nodes                                                  | `1`                            |
-| `fluentd.updateStrategy`                   | Update strategy for the deployment                                       | `{type: "RollingUpdate"}`      |
-| `fluentd.podLabels`                        | FluentD pod labels                                                       | `{}` (evaluated as a template) |
-| `fluentd.podAnnotations`                   | FluentD Pod annotations                                                  | `{}` (evaluated as a template) |
-| `fluentd.livenessProbe`                    | Liveness probe configuration for FluentD                                 | `Check values.yaml file`       |
-| `fluentd.readinessProbe`                   | Readiness probe configuration for FluentD                                | `Check values.yaml file`       |
-| `fluentd.resources.limits`                 | The resources limits for FluentD containers                              | `{}`                           |
-| `fluentd.resources.requests`               | The requested resources for FluentD containers                           | `{}`                           |
-| `opensearch.replicaCount`                  | Number of OpenSearch nodes                                               | `1`                            |
-| `opensearch.updateStrategy`                | Update strategy for the deployment                                       | `{type: "RollingUpdate"}`      |
-| `opensearch.podLabels`                     | OpenSearch pod labels                                                    | `{}` (evaluated as a template) |
-| `opensearch.podAnnotations`                | OpenSearch Pod annotations                                               | `{}` (evaluated as a template) |
-| `opensearch.livenessProbe`                 | Liveness probe configuration for OpenSearch                              | `Check values.yaml file`       |
-| `opensearch.readinessProbe`                | Readiness probe configuration for OpenSearch                             | `Check values.yaml file`       |
-| `opensearch.resources.limits`              | The resources limits for OpenSearch containers                           | `{}`                           |
-| `opensearch.resources.requests`            | The requested resources for OpenSearch containers                        | `{}`                           |
-| `opensearch-dashboards.replicaCount`       | Number of opensearch-dashboards nodes                                    | `1`                            |
-| `opensearch-dashboards.updateStrategy`     | Update strategy for the deployment                                       | `{type: "RollingUpdate"}`      |
-| `opensearch-dashboards.podLabels`          | opensearch-dashboards pod labels                                         | `{}` (evaluated as a template) |
-| `opensearch-dashboards.podAnnotations`     | opensearch-dashboards Pod annotations                                    | `{}` (evaluated as a template) |
-| `opensearch-dashboards.livenessProbe`      | Liveness probe configuration for opensearch-dashboards                   | `Check values.yaml file`       |
-| `opensearch-dashboards.readinessProbe`     | Readiness probe configuration for opensearch-dashboards                  | `Check values.yaml file`       |
-| `opensearch-dashboards.resources.limits`   | The resources limits for opensearch-dashboards containers                | `{}`                           |
-| `opensearch-dashboards.resources.requests` | The requested resources for opensearch-dashboards containers             | `{}`                           |
+| Parameter                                  | Description                                                  | Default                        |
+| ------------------------------------------ | ------------------------------------------------------------ | ------------------------------ |
+| `fluentd.replicaCount`                     | Number of FluentD nodes                                      | `1`                            |
+| `fluentd.updateStrategy`                   | Update strategy for the deployment                           | `{type: "RollingUpdate"}`      |
+| `fluentd.podLabels`                        | FluentD pod labels                                           | `{}` (evaluated as a template) |
+| `fluentd.podAnnotations`                   | FluentD Pod annotations                                      | `{}` (evaluated as a template) |
+| `fluentd.livenessProbe`                    | Liveness probe configuration for FluentD                     | `Check values.yaml file`       |
+| `fluentd.readinessProbe`                   | Readiness probe configuration for FluentD                    | `Check values.yaml file`       |
+| `fluentd.resources.limits`                 | The resources limits for FluentD containers                  | `{}`                           |
+| `fluentd.resources.requests`               | The requested resources for FluentD containers               | `{}`                           |
+| `opensearch.replicaCount`                  | Number of OpenSearch nodes                                   | `1`                            |
+| `opensearch.updateStrategy`                | Update strategy for the deployment                           | `{type: "RollingUpdate"}`      |
+| `opensearch.podLabels`                     | OpenSearch pod labels                                        | `{}` (evaluated as a template) |
+| `opensearch.podAnnotations`                | OpenSearch Pod annotations                                   | `{}` (evaluated as a template) |
+| `opensearch.livenessProbe`                 | Liveness probe configuration for OpenSearch                  | `Check values.yaml file`       |
+| `opensearch.readinessProbe`                | Readiness probe configuration for OpenSearch                 | `Check values.yaml file`       |
+| `opensearch.resources.limits`              | The resources limits for OpenSearch containers               | `{}`                           |
+| `opensearch.resources.requests`            | The requested resources for OpenSearch containers            | `{}`                           |
+| `opensearch-dashboards.replicaCount`       | Number of opensearch-dashboards nodes                        | `1`                            |
+| `opensearch-dashboards.updateStrategy`     | Update strategy for the deployment                           | `{type: "RollingUpdate"}`      |
+| `opensearch-dashboards.podLabels`          | opensearch-dashboards pod labels                             | `{}` (evaluated as a template) |
+| `opensearch-dashboards.podAnnotations`     | opensearch-dashboards Pod annotations                        | `{}` (evaluated as a template) |
+| `opensearch-dashboards.livenessProbe`      | Liveness probe configuration for opensearch-dashboards       | `Check values.yaml file`       |
+| `opensearch-dashboards.readinessProbe`     | Readiness probe configuration for opensearch-dashboards      | `Check values.yaml file`       |
+| `opensearch-dashboards.resources.limits`   | The resources limits for opensearch-dashboards containers    | `{}`                           |
+| `opensearch-dashboards.resources.requests` | The requested resources for opensearch-dashboards containers | `{}`                           |
 
 ### Persistence parameters
 
 | Parameter                                        | Description                                             | Default         |
-|--------------------------------------------------|---------------------------------------------------------|-----------------|
+| ------------------------------------------------ | ------------------------------------------------------- | --------------- |
 | `fluentd.persistence.enabled`                    | Enable persistence for the Fluentd                      | `true`          |
 | `fluentd.persistence.storageClass`               | Storage class to use with the Fluentd PVC               | `nil`           |
 | `fluentd.persistence.accessMode`                 | Access mode to the Fluentd PV                           | `ReadWriteOnce` |
@@ -136,20 +139,20 @@ controller. If you don't know how it works we strongly suggest reading the
 regarding this annotation and the features that it provides.
 > **Note**: You can also use a [dedicated ingress controller](https://portal.cloudmobility.io/docs/en/cns/dedicated-ingress-controller.html)
 
-| Parameter                                  | Description                                                                              | Default                                                                                  |
-|--------------------------------------------|------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| `ingress.enabled`                          | Enable ingress controller resource                                                       | `true`                                                                                   |
-| `ingress.hostname`                         | Default host for the ingress resource. If specified as "*" no host rule is configured.   | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`                       |
-| `ingress.path`                             | Default path for the ingress resource                                                    | `/`                                                                                      |
-| `ingress.tls`                              | Create TLS Secret                                                                        | `true`                                                                                   |
-| `ingress.annotations`                      | Ingress annotations                                                                      | `[kubernetes.io/ingress.class: cmy-shared, cloudmobility.io/generate-hostname: "true"]`  |
-| `ingress.spec.ingressClassName`            | Ingress annotations                                                                      | `cmy-shared`                                                                             |
+| Parameter                       | Description                                                                            | Default                                                                                 |
+| ------------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ingress.enabled`               | Enable ingress controller resource                                                     | `true`                                                                                  |
+| `ingress.hostname`              | Default host for the ingress resource. If specified as "*" no host rule is configured. | `<any-text>-<namespace>-<cluster-name>.cloud.eu1.cloudmobility.io`                      |
+| `ingress.path`                  | Default path for the ingress resource                                                  | `/`                                                                                     |
+| `ingress.tls`                   | Create TLS Secret                                                                      | `true`                                                                                  |
+| `ingress.annotations`           | Ingress annotations                                                                    | `[kubernetes.io/ingress.class: cmy-shared, cloudmobility.io/generate-hostname: "true"]` |
+| `ingress.spec.ingressClassName` | Ingress annotations                                                                    | `cmy-shared`                                                                            |
 
 > **Note**: If you use the `cloudmobility.io/generate-hostname` your `ingress.hostname` value will be overwritten and tls will be enabled by default.
 
 ### Metrics parameters
 
-| Parameter                                      | Description                                                                                            | Default                                   |
-|------------------------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------|
-| `fluentd.metrics.prometheusRule.enabled`       | if `true`, creates a Prometheus Operator ServiceMonitor                                                | `false`                                   |
-| `fluentd.metrics.prometheusRule.namespace`     | Namespace in which Prometheus is running                                                               | `nil`                                     |
+| Parameter                                  | Description                                             | Default |
+| ------------------------------------------ | ------------------------------------------------------- | ------- |
+| `fluentd.metrics.prometheusRule.enabled`   | if `true`, creates a Prometheus Operator ServiceMonitor | `false` |
+| `fluentd.metrics.prometheusRule.namespace` | Namespace in which Prometheus is running                | `nil`   |
