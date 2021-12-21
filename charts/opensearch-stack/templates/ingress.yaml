@@ -20,8 +20,10 @@ spec:
           - path: {{ .path | quote}}
             pathType: Prefix
             backend:
-              serviceName: "{{ $fullName }}-{{ .serviceName }}"
-              servicePort: {{ .servicePort }}
+              service:
+                name: "{{ $fullName }}-{{ .serviceName }}"
+                port:
+                  number: {{ .servicePort }}
           {{- end}}
   tls:
     {{- if .Values.ingress.tls }}
