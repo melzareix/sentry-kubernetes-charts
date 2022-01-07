@@ -25,6 +25,6 @@ jobs:
       - name: Add helm charts repositories
         run: make ci-add-helm-repos
       - name: install helm charts dependencies
-        run: make ci-lint-install-depenedencies
+        run: make ci-lint-install-dependencies
       - name: Install helm charts
         run: make ci-lint-helm-charts

@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: generate-cert-job
+  labels: {{- include "efk.labels" . | nindent 4 }}
 spec:
   template:
     spec:
