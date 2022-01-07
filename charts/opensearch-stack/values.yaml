@@ -6,10 +6,10 @@ ingress:
   services:
     - serviceName: fluentd
       servicePort: 9880
-      path: /fluentd
+      path: /log-catcher
     - serviceName: opensearch-dashboards
       servicePort: 5601
-      path: /opensearch-dashboards
+      path: /dashboard
 
 opensearch-dashboards:
   opensearchHosts: "https://opensearch-cluster-master:9200"
@@ -43,7 +43,7 @@ opensearch-dashboards:
     opensearch_dashboards.yml:
       server:
         name: opensearch-dashboards
-        basePath: "/opensearch-dashboards"
+        basePath: "/dashboard"
         rewriteBasePath: true
         ssl.enabled: false
       opensearch:
