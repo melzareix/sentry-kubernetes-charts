@@ -1,0 +1,262 @@
+---
+ingress:
+  enabled: false
+  tls: true
+  hostname: ""
+  services:
+    - serviceName: fluentd
+      servicePort: 9880
+      path: /fluentd
+    - serviceName: opensearch-dashboards
+      servicePort: 5601
+      path: /opensearch-dashboards
+
+opensearch-dashboards:
+  opensearchHosts: "https://opensearch-cluster-master:9200"
+  extraInitContainers:
+    - name: ssl-init
+      image: bash
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+      command: ["/usr/local/bin/bash"]
+      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
+      volumeMounts:
+        - name: ssl-folder
+          mountPath: /tmp/ssl
+  rbac:
+    create: false
+  extraVolumes:
+    - name: ssl-folder
+      persistentVolumeClaim:
+        claimName: monitoring-certs
+  extraVolumeMounts:
+    - name: ssl-folder
+      mountPath: /usr/share/opensearch-dashboards/config/custom/ssl
+  opensearchAccount:
+    secret: "cmy-opensearch-account-config"
+  config:
+    opensearch_dashboards.yml:
+      server:
+        name: opensearch-dashboards
+        basePath: "/opensearch-dashboards"
+        rewriteBasePath: true
+        ssl.enabled: false
+      opensearch:
+        hosts: ["https://opensearch-cluster-master:9200"]
+        ssl:
+          certificate: "/usr/share/opensearch-dashboards/config/custom/ssl/admin.pem"
+          key: "/usr/share/opensearch-dashboards/config/custom/ssl/admin-key.pem"
+          certificateAuthorities: /usr/share/opensearch-dashboards/config/custom/ssl/root-ca.pem
+          verificationMode: none
+        logQueries: true
+      logging:
+        verbose: true
+
+opensearch:
+  users:
+    logging:
+      user: ""
+      password: ""
+    dashboard:
+      user: ""
+      password: ""
+  replicas: 1
+  minimumMasterNodes: 1
+  extraInitContainers:
+    - name: ssl-init
+      image: bash
+      securityContext:
+        runAsUser: 1000
+        runAsNonRoot: true
+      resources:
+        requests:
+          cpu: "100m"
+          memory: "64Mi"
+      command: ["/usr/local/bin/bash"]
+      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
+      volumeMounts:
+        - name: ssl-folder
+          mountPath: /tmp/ssl
+  extraVolumes:
+    - name: ssl-folder
+      persistentVolumeClaim:
+        claimName: monitoring-certs
+  extraVolumeMounts:
+    - name: ssl-folder
+      mountPath: /usr/share/opensearch/config/custom/ssl
+  networkPolicy:
+    create: false
+  podSecurityPolicy:
+    create: false
+    spec:
+      privileged: true
+  persistence:
+    enabled: true
+    enableInitChown: false
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "4Gi"
+    limits:
+      cpu: "2000m"
+      memory: "8Gi"
+  config:
+    opensearch.yml: |
+      cluster.name: opensearch-cluster
+      # Bind to all interfaces because we don't know what IP address Docker will assign to us.
+      #network.host: 0.0.0.0
+      plugins:
+        security:
+          ssl:
+            transport:
+              pemcert_filepath: /usr/share/opensearch/config/custom/ssl/admin.pem
+              pemkey_filepath:  /usr/share/opensearch/config/custom/ssl/admin-key.pem
+              pemtrustedcas_filepath: /usr/share/opensearch/config/custom/ssl/root-ca.pem
+              enforce_hostname_verification: false
+            http:
+              enabled: true
+              pemcert_filepath: /usr/share/opensearch/config/custom/ssl/admin.pem
+              pemkey_filepath:  /usr/share/opensearch/config/custom/ssl/admin-key.pem
+              pemtrustedcas_filepath: /usr/share/opensearch/config/custom/ssl/root-ca.pem
+          authcz:
+            admin_dn:
+              - 'CN=localhost,OU=UNIT,O=ORG,O=Lisbon,ST=DAIMLER,C=CM'
+          allow_unsafe_democertificates: true
+          allow_default_init_securityindex: true
+          audit.type: internal_opensearch
+          enable_snapshot_restore_privilege: true
+          check_snapshot_restore_write_privileges: true
+          restapi:
+            roles_enabled: ["all_access", "security_rest_api_access"]
+          system_indices:
+            enabled: true
+            indices:
+              [
+                ".opendistro-alerting-config",
+                ".opendistro-alerting-alert*",
+                ".opendistro-anomaly-results*",
+                ".opendistro-anomaly-detector*",
+                ".opendistro-anomaly-checkpoints",
+                ".opendistro-anomaly-detection-state",
+                ".opendistro-reports-*",
+                ".opendistro-notifications-*",
+                ".opendistro-notebooks",
+                ".opendistro-asynchronous-search-response*",
+              ]
+  securityConfig:
+    configSecret: cmy-opensearch-security-config
+    internalUsersSecret: cmy-opensearch-internal-users-config
+    rolesSecret: cmy-opensearch-roles-config
+    rolesMappingSecret: cmy-opensearch-roles-mapping-config
+    tenantsSecret: cmy-opensearch-tenants-config
+  lifecycle:
+    postStart:
+      exec:
+        command:
+          - bash
+          - -c
+          - |
+            #!/bin/bash
+            sleep 20
+            updatedFlag=0
+            while [[ "$updatedFlag" -eq 0  ]]; do
+              JAVA_HOME=/usr/share/opensearch/jdk /usr/share/opensearch/plugins/opensearch-security/tools/securityadmin.sh \
+                          -cacert /usr/share/opensearch/config/custom/ssl/root-ca.pem \
+                          -cert /usr/share/opensearch/config/custom/ssl/admin.pem \
+                          -key /usr/share/opensearch/config/custom/ssl/admin-key.pem \
+                          -cd /usr/share/opensearch/plugins/opensearch-security/securityconfig/ \
+                          -icl \
+                          -nhnv >> /usr/share/opensearch/update_pass.log
+              if [[ $? -eq 0 ]]; then
+                updatedFlag=1
+                echo "flag $updatedFlag updated" >> /usr/share/opensearch/update_pass.log
+              fi
+              sleep 2
+            done
+            # Add a template to adjust number of shards/replicas1
+            TEMPLATE_NAME=cmy_logging
+            INDEX_PATTERN="*"
+            SHARD_COUNT=1
+            REPLICA_COUNT=0
+            ES_URL=https://localhost:9200
+            while [[ "$(curl -k -I -o /dev/null -w '%{http_code}\n' --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem $ES_URL)" != "200" ]]; do sleep 1; done
+            echo "Creating template $TEMPLATE_NAME"
+            curl -k --user template_user:template_pass --cacert /usr/share/opensearch/config/custom/ssl/ca-root.pem --cert /usr/share/opensearch/config/custom/ssl/admin.pem --key /usr/share/opensearch/config/custom/ssl/admin-key.pem --X PUT "$ES_URL/_template/$TEMPLATE_NAME" -H 'Content-Type: application/json' -d '{"index_patterns":['\""$INDEX_PATTERN"\"'],"settings":{"number_of_shards":'$SHARD_COUNT',"number_of_replicas":'$REPLICA_COUNT'}}'
+
+fluentd:
+  kind: "Deployment"
+  rbac:
+    create: false
+  podSecurityPolicy:
+    enabled: false
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  service:
+    type: "ClusterIP"
+    annotations: {}
+    ports:
+      - name: "forwarder"
+        protocol: TCP
+        containerPort: 24224
+      - name: "loginput"
+        protocol: TCP
+        containerPort: 9880
+      - name: "probeport"
+        protocol: TCP
+        containerPort: 9881
+  dashboards:
+    enabled: false
+  autoscaling:
+    enabled: false
+  metrics:
+    serviceMonitor:
+      enabled: false
+  livenessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 90
+    periodSeconds: 30
+    timeoutSeconds: 2
+  readinessProbe:
+    httpGet:
+      path: /metrics
+      port: metrics
+    initialDelaySeconds: 90
+    periodSeconds: 30
+    timeoutSeconds: 2
+  securityContext:
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    runAsUser: 1000
+  volumes:
+    - name: etcfluentd-main
+      configMap:
+        name: fluentd-main
+        defaultMode: 0777
+    - name: etcfluentd-config
+      secret:
+        secretName: cmy-fluentd-configs
+        defaultMode: 0777
+  volumeMounts:
+    - name: etcfluentd-main
+      mountPath: /etc/fluent
+    - name: etcfluentd-config
+      mountPath: /etc/fluent/config.d/
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"

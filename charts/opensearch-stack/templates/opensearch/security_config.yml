@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cmy-opensearch-security-config
+  labels: {{- include "efk.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  config.yml: |
+    _meta:
+      type: "config"
+      config_version: 2
+
+    config:
+      dynamic:
+        http:
+          anonymous_auth_enabled: false
+          xff:
+            enabled: false
+            internalProxies: '192\.168\.0\.10|192\.168\.0\.11' # regex pattern
+        authc:
+          basic_internal_auth_domain:
+            description: "Authenticate via HTTP Basic"
+            http_enabled: true
+            transport_enabled: true
+            order: 1
+            http_authenticator:
+              type: basic
+              challenge: true
+            authentication_backend:
+              type: intern

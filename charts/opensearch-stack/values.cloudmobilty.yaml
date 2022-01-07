@@ -1,0 +1,16 @@
+---
+ingress:
+  enabled: true
+  ingressClassName: cmy-shared
+  annotations:
+    ## If you want to automatically generate the hostname
+    ## use the cloudmobility.io/generate-hostname annotation with true
+    cloudmobility.io/generate-hostname: "true"
+opensearch:
+  users:
+    logging:
+      user: ""
+      password: ""
+    dashboard:
+      user: ""
+      password: ""

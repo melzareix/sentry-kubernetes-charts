@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cmy-opensearch-tenants-config
+  labels: {{- include "efk.labels" . | nindent 4 }}
+stringData:
+  tenants.yml: |
+    ---
+    _meta:
+        type: "tenants"
+        config_version: 2
+    admin_tenant:
+        reserved: false

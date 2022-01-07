@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cmy-fluentd-configs
+  labels: {{- include "efk.labels" . | nindent 4 }}
+stringData:
+  01_sources.conf: |-
+    <source>
+      @type http
+      port 9880
+      bind 0.0.0.0
+      body_size_limit 32m
+      keepalive_timeout 10s
+      @label @ELASTIC_INPUT
+    </source>
+    <source>
+      @type http
+      port 9881
+      bind 0.0.0.0
+    </source>
+  02_filters.conf: |-
+    <label @ELASTIC_INPUT>
+      <match **>
+        @type relabel
+        @label @ELASTIC_DISPATCH
+      </match>
+    </label>
+  03_dispatch.conf: |-
+    <label @ELASTIC_DISPATCH>
+      <match **>
+        @type relabel
+        @label @ELASTIC_OUTPUT
+      </match>
+    </label>
+
+  04_outputs.conf: |-
+    <label @ELASTIC_OUTPUT>
+      <match **>
+        @type elasticsearch
+        scheme https
+        host "opensearch-cluster-master"
+        port 9200
+        @log_level trace
+        index_name fluentd-${tag}-%Y.%m.%d
+        <buffer tag, time>
+          timekey 1h # chunks per hours ("3600" also available)
+        </buffer>
+        user {{ required "A valid .Values.opensearch.users.logging.user entry required!"  .Values.opensearch.users.logging.user }}
+        password {{ required "A valid .Values.opensearch.users.logging.password entry required!"  .Values.opensearch.users.logging.password }}
+        ssl_verify false
+        ssl_version TLSv1_2
+        logstash_format false
+        enable_ilm true
+        flush_interval 10s
+      </match>
+    </label>
