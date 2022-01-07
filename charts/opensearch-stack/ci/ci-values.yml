@@ -1,0 +1,8 @@
+opensearch:
+  users:
+    logging:
+      user: "logging-ci"
+      password: "logging-ci-password"
+    dashboard:
+      user: "dashboard-ci"
+      password: "dashboard-ci-password"
