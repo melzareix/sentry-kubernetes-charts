@@ -17,11 +17,14 @@ ci-lint-helm-charts: ## Lint Helm charts
 	helm lint --strict ./charts/hello && \
 	helm lint --strict -f ./charts/opensearch-stack/ci/ci-values.yml ./charts/opensearch-stack
 
-.PHONY: ci-lint-install-depenedencies
-ci-lint-install-depenedencies: ## Install helm chart dependencies
+.PHONY: ci-lint-install-dependencies
+ci-lint-install-dependencies: ## Install helm chart dependencies
 	@helm dependency update ./charts/grafana && \
 	helm dependency update ./charts/hello && \
 	helm dependency update ./charts/opensearch-stack
 
 .PHONY: lint-charts
-lint-charts: ci-add-helm-repos ci-lint-helm-charts ci-lint-install-depenedencies ## Lint Helm charts
+lint-charts: ## Lint Helm charts
+	make ci-add-helm-repos
+	make ci-lint-install-dependencies
+	make ci-lint-helm-charts
