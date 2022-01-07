@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: manage-certs-renew
+  labels: {{- include "efk.labels" . | nindent 4 }}
 spec:
   schedule: "0 * * * *"
   jobTemplate:
