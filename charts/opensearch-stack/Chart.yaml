@@ -5,8 +5,8 @@ name: opensearch-stack
 description: Cloud Mobility Stack for OpenSearch
 home: https://github.com/cloudmobility/charts/tree/master/charts/efk-stack
 icon: https://cloudmobility.io/icons/charts/opensearch.png
-version: 1.0.0
-appVersion: "1.0.0"
+version: 1.0.1
+appVersion: "1.0.1"
 dependencies:
   - name: opensearch
     version: "1.5.8"
