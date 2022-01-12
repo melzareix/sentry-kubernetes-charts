@@ -5,7 +5,7 @@ name: opensearch-stack
 description: Cloud Mobility Stack for OpenSearch
 home: https://github.com/cloudmobility/charts/tree/master/charts/opensearch-stack
 icon: https://portal.cloudmobility.io/icons/charts/opensearch.png
-version: 1.0.4
+version: 1.0.5
 appVersion: "1.0.1"
 dependencies:
   - name: opensearch
@@ -20,3 +20,5 @@ dependencies:
 maintainers:
   - email: r.mota@kigroup.de
     name: Rubem Mota
+annotations:
+  enabled: true

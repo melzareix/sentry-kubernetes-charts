@@ -58,6 +58,7 @@ opensearch-dashboards:
         verbose: true
 
 opensearch:
+  antiAffinityTopologyKey: "topology.kubernetes.io/zone"
   users:
     logging:
       user: ""
