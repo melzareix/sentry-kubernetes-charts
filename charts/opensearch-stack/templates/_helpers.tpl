@@ -43,3 +43,13 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
+
+{{/*
+Generate certificates for custom-metrics api server
+*/}}
+{{- define "efk.gen-certs" -}}
+{{- $altNames := list ( printf "%s.%s" (include "efk.name" .) .Release.Namespace ) ( printf "%s.%s.svc" (include "efk.name" .) .Release.Namespace ) -}}
+{{- $ca := genCA "efk-ca" 768 -}}
+root-ca-key.pem: {{ $ca.Key | b64enc}}
+root-ca.pem: {{ $ca.Cert | b64enc}}
+{{- end -}}

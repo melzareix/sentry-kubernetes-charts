@@ -13,27 +13,12 @@ ingress:
 
 opensearch-dashboards:
   opensearchHosts: "https://opensearch-cluster-master:9200"
-  extraInitContainers:
-    - name: ssl-init
-      image: bash
-      securityContext:
-        runAsUser: 1000
-        runAsNonRoot: true
-      resources:
-        requests:
-          cpu: "100m"
-          memory: "64Mi"
-      command: ["/usr/local/bin/bash"]
-      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
-      volumeMounts:
-        - name: ssl-folder
-          mountPath: /tmp/ssl
   rbac:
     create: false
   extraVolumes:
     - name: ssl-folder
-      persistentVolumeClaim:
-        claimName: monitoring-certs
+      secret:
+        secretName: stack-secrets
   extraVolumeMounts:
     - name: ssl-folder
       mountPath: /usr/share/opensearch-dashboards/config/custom/ssl
@@ -49,8 +34,6 @@ opensearch-dashboards:
       opensearch:
         hosts: ["https://opensearch-cluster-master:9200"]
         ssl:
-          certificate: "/usr/share/opensearch-dashboards/config/custom/ssl/admin.pem"
-          key: "/usr/share/opensearch-dashboards/config/custom/ssl/admin-key.pem"
           certificateAuthorities: /usr/share/opensearch-dashboards/config/custom/ssl/root-ca.pem
           verificationMode: none
         logQueries: true
@@ -58,7 +41,6 @@ opensearch-dashboards:
         verbose: true
 
 opensearch:
-  antiAffinityTopologyKey: "topology.kubernetes.io/zone"
   users:
     logging:
       user: ""
@@ -70,7 +52,7 @@ opensearch:
   minimumMasterNodes: 1
   extraInitContainers:
     - name: ssl-init
-      image: bash
+      image: nginx
       securityContext:
         runAsUser: 1000
         runAsNonRoot: true
@@ -78,15 +60,30 @@ opensearch:
         requests:
           cpu: "100m"
           memory: "64Mi"
-      command: ["/usr/local/bin/bash"]
-      args: ["-c", "while [[ ! -f /tmp/ssl/admin.pem ]]; do sleep 10; done"]
+      command:
+        - bash
+        - -c
+        - |
+          #!/bin/bash
+          echo "Regenerate certificate";
+          cp /tmp/ca-folder/* ./tmp/ssl;
+          openssl genrsa -out /tmp/ssl/admin-key-temp.pem 2048 ;
+          openssl pkcs8 -inform PEM -outform PEM -in /tmp/ssl/admin-key-temp.pem -topk8 -nocrypt -v1 PBE-SHA1-3DES -out /tmp/ssl/admin-key.pem ;
+          openssl req -new -key /tmp/ssl/admin-key.pem -subj "/C=CM/ST=DAIMLER/O=Lisbon/O=ORG/OU=UNIT/CN=localhost" -out /tmp/ssl/admin.csr ;
+          openssl x509 -req -in /tmp/ssl/admin.csr -CA /tmp/ssl/root-ca.pem -CAkey /tmp/ssl/root-ca-key.pem -CAcreateserial -sha256 -out /tmp/ssl/admin.pem -days 768 ;
+          rm /tmp/ssl/admin-key-temp.pem ;
+          rm /tmp/ssl/admin.csr ;
       volumeMounts:
+        - name: ssl-ca-folder
+          mountPath: /tmp/ca-folder
         - name: ssl-folder
           mountPath: /tmp/ssl
   extraVolumes:
     - name: ssl-folder
-      persistentVolumeClaim:
-        claimName: monitoring-certs
+      emptyDir: {}
+    - name: ssl-ca-folder
+      secret:
+        secretName: stack-secrets
   extraVolumeMounts:
     - name: ssl-folder
       mountPath: /usr/share/opensearch/config/custom/ssl
