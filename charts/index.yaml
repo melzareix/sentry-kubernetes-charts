@@ -3,7 +3,7 @@ entries:
   clickhouse:
   - apiVersion: v2
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.556495635Z"
+    created: "2022-01-27T14:27:24.493063834Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -18,11 +18,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-3.1.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-3.1.2.tgz
     version: 3.1.2
   - apiVersion: v2
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.55514812Z"
+    created: "2022-01-27T14:27:24.491626616Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -37,11 +37,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-3.1.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-3.1.1.tgz
     version: 3.1.1
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.553831704Z"
+    created: "2022-01-27T14:27:24.490077595Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -56,11 +56,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-3.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-3.1.0.tgz
     version: 3.1.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.552473488Z"
+    created: "2022-01-27T14:27:24.488372973Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -75,11 +75,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-3.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-3.0.0.tgz
     version: 3.0.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.548210538Z"
+    created: "2022-01-27T14:27:24.486258746Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -94,11 +94,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-2.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-2.0.0.tgz
     version: 2.0.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.546552618Z"
+    created: "2022-01-27T14:27:24.484964429Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -113,11 +113,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.5.0.tgz
     version: 1.5.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.545275303Z"
+    created: "2022-01-27T14:27:24.483652612Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -132,11 +132,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.4.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.4.1.tgz
     version: 1.4.1
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.543937888Z"
+    created: "2022-01-27T14:27:24.482410295Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -151,11 +151,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.4.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.4.0.tgz
     version: 1.4.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.54240057Z"
+    created: "2022-01-27T14:27:24.481132479Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -170,11 +170,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.3.0.tgz
     version: 1.3.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.541359157Z"
+    created: "2022-01-27T14:27:24.479930363Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -189,11 +189,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.2.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.2.2.tgz
     version: 1.2.2
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.539471135Z"
+    created: "2022-01-27T14:27:24.477807635Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -208,11 +208,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.2.1.tgz
     version: 1.2.1
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.538021718Z"
+    created: "2022-01-27T14:27:24.476291516Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -227,11 +227,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.2.0.tgz
     version: 1.2.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.537004006Z"
+    created: "2022-01-27T14:27:24.474973998Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -246,11 +246,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.1.0.tgz
     version: 1.1.0
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.535962594Z"
+    created: "2022-01-27T14:27:24.473737382Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -265,11 +265,11 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.0.1.tgz
     version: 1.0.1
   - apiVersion: v1
     appVersion: "19.14"
-    created: "2022-01-27T14:18:53.534885481Z"
+    created: "2022-01-27T14:27:24.472469266Z"
     description: ClickHouse is an open source column-oriented database management
       system capable of real time generation of analytical data reports using SQL
       queries
@@ -284,12 +284,12 @@ entries:
     sources:
     - https://github.com/sentry-kubernetes/charts
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/clickhouse-1.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/clickhouse-1.0.0.tgz
     version: 1.0.0
   sentry:
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.266539788Z"
+    created: "2022-01-27T14:27:25.199492747Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -317,15 +317,15 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 9.3.3
     description: A Helm chart for Kubernetes
-    digest: 0a34b252649b9e656212f6a2c887faa9b25444803929ea0f34ce425132561b2d
+    digest: f7d375657d16e2e519283a4aa0a900b364d7861c97d3e85a2aa37b54ae306bfe
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-12.0.4.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-12.0.4.tgz
     version: 12.0.4
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.232168584Z"
+    created: "2022-01-27T14:27:25.166427516Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -357,11 +357,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-12.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-12.0.0.tgz
     version: 12.0.0
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.202714337Z"
+    created: "2022-01-27T14:27:25.141503691Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -393,11 +393,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.9.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.9.0.tgz
     version: 11.9.0
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.179789768Z"
+    created: "2022-01-27T14:27:25.115579253Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -429,11 +429,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.8.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.8.0.tgz
     version: 11.8.0
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.155692384Z"
+    created: "2022-01-27T14:27:25.092622954Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -465,11 +465,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.7.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.7.0.tgz
     version: 11.7.0
   - apiVersion: v2
     appVersion: 21.8.0
-    created: "2022-01-27T14:18:54.12732455Z"
+    created: "2022-01-27T14:27:25.067153721Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -501,11 +501,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.6.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.6.0.tgz
     version: 11.6.0
   - apiVersion: v2
     appVersion: 21.7.0
-    created: "2022-01-27T14:18:54.104373181Z"
+    created: "2022-01-27T14:27:25.04404802Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -537,11 +537,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.5.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.5.1.tgz
     version: 11.5.1
   - apiVersion: v2
     appVersion: 21.7.0
-    created: "2022-01-27T14:18:54.080080995Z"
+    created: "2022-01-27T14:27:25.018943293Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -573,11 +573,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.5.0.tgz
     version: 11.5.0
   - apiVersion: v2
     appVersion: 21.6.1
-    created: "2022-01-27T14:18:54.055620207Z"
+    created: "2022-01-27T14:27:24.99573289Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -609,11 +609,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.4.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.4.1.tgz
     version: 11.4.1
   - apiVersion: v2
     appVersion: 21.6.1
-    created: "2022-01-27T14:18:54.033585348Z"
+    created: "2022-01-27T14:27:24.974149809Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -645,11 +645,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.4.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.4.0.tgz
     version: 11.4.0
   - apiVersion: v2
     appVersion: 21.5.1
-    created: "2022-01-27T14:18:54.012843904Z"
+    created: "2022-01-27T14:27:24.951303711Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -681,11 +681,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.3.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.3.3.tgz
     version: 11.3.3
   - apiVersion: v2
     appVersion: 21.5.1
-    created: "2022-01-27T14:18:53.993275274Z"
+    created: "2022-01-27T14:27:24.930628441Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -717,11 +717,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.3.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.3.2.tgz
     version: 11.3.2
   - apiVersion: v2
     appVersion: 21.5.1
-    created: "2022-01-27T14:18:53.971932923Z"
+    created: "2022-01-27T14:27:24.909392164Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -753,11 +753,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.3.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.3.1.tgz
     version: 11.3.1
   - apiVersion: v2
     appVersion: 21.5.1
-    created: "2022-01-27T14:18:53.952726797Z"
+    created: "2022-01-27T14:27:24.886029959Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -789,11 +789,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.3.0.tgz
     version: 11.3.0
   - apiVersion: v2
     appVersion: 21.4.1
-    created: "2022-01-27T14:18:53.932042953Z"
+    created: "2022-01-27T14:27:24.864397077Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -825,11 +825,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.2.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.2.2.tgz
     version: 11.2.2
   - apiVersion: v2
     appVersion: 21.4.1
-    created: "2022-01-27T14:18:53.911159208Z"
+    created: "2022-01-27T14:27:24.843751508Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -861,11 +861,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.2.1.tgz
     version: 11.2.1
   - apiVersion: v2
     appVersion: 21.4.0
-    created: "2022-01-27T14:18:53.889758656Z"
+    created: "2022-01-27T14:27:24.820323702Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -897,11 +897,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.2.0.tgz
     version: 11.2.0
   - apiVersion: v2
     appVersion: 21.4.0
-    created: "2022-01-27T14:18:53.870070724Z"
+    created: "2022-01-27T14:27:24.798471117Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -933,11 +933,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.1.0.tgz
     version: 11.1.0
   - apiVersion: v2
     appVersion: 21.3.1
-    created: "2022-01-27T14:18:53.84418312Z"
+    created: "2022-01-27T14:27:24.776344829Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -969,11 +969,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.0.1.tgz
     version: 11.0.1
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2022-01-27T14:18:53.818872422Z"
+    created: "2022-01-27T14:27:24.754064438Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1005,11 +1005,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-11.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-11.0.0.tgz
     version: 11.0.0
   - apiVersion: v2
     appVersion: 21.3.0
-    created: "2022-01-27T14:18:53.798034477Z"
+    created: "2022-01-27T14:27:24.734044677Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1041,11 +1041,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-10.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-10.1.0.tgz
     version: 10.1.0
   - apiVersion: v2
     appVersion: 21.2.0
-    created: "2022-01-27T14:18:53.775987117Z"
+    created: "2022-01-27T14:27:24.71200439Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1077,11 +1077,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-10.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-10.0.0.tgz
     version: 10.0.0
   - apiVersion: v2
     appVersion: 21.2.0
-    created: "2022-01-27T14:18:55.280199113Z"
+    created: "2022-01-27T14:27:26.263150119Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1113,11 +1113,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.1.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.1.2.tgz
     version: 9.1.2
   - apiVersion: v2
     appVersion: 21.2.0
-    created: "2022-01-27T14:18:55.260140577Z"
+    created: "2022-01-27T14:27:26.240718127Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1149,11 +1149,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.1.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.1.1.tgz
     version: 9.1.1
   - apiVersion: v2
     appVersion: 21.2.0
-    created: "2022-01-27T14:18:55.239320832Z"
+    created: "2022-01-27T14:27:26.218898242Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1185,11 +1185,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.1.0.tgz
     version: 9.1.0
   - apiVersion: v2
     appVersion: 21.1.0
-    created: "2022-01-27T14:18:55.219102994Z"
+    created: "2022-01-27T14:27:26.197115458Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1221,11 +1221,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.0.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.0.2.tgz
     version: 9.0.2
   - apiVersion: v2
     appVersion: 21.1.0
-    created: "2022-01-27T14:18:55.198058846Z"
+    created: "2022-01-27T14:27:26.170166607Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1257,11 +1257,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.0.1.tgz
     version: 9.0.1
   - apiVersion: v2
     appVersion: 21.1.0
-    created: "2022-01-27T14:18:55.178326714Z"
+    created: "2022-01-27T14:27:26.147598412Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1293,11 +1293,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-9.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-9.0.0.tgz
     version: 9.0.0
   - apiVersion: v2
     appVersion: 20.12.1
-    created: "2022-01-27T14:18:55.158502081Z"
+    created: "2022-01-27T14:27:26.12594453Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1329,11 +1329,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.1.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.1.3.tgz
     version: 8.1.3
   - apiVersion: v2
     appVersion: 20.12.1
-    created: "2022-01-27T14:18:55.139895262Z"
+    created: "2022-01-27T14:27:26.105418462Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1365,11 +1365,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.1.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.1.2.tgz
     version: 8.1.2
   - apiVersion: v2
     appVersion: 20.12.1
-    created: "2022-01-27T14:18:55.122020652Z"
+    created: "2022-01-27T14:27:26.085014996Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1401,11 +1401,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.1.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.1.1.tgz
     version: 8.1.1
   - apiVersion: v2
     appVersion: 20.12.1
-    created: "2022-01-27T14:18:55.102802826Z"
+    created: "2022-01-27T14:27:26.066537155Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1437,11 +1437,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.1.0.tgz
     version: 8.1.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:55.083800902Z"
+    created: "2022-01-27T14:27:26.046054388Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1473,11 +1473,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.0.1.tgz
     version: 8.0.1
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:55.065303685Z"
+    created: "2022-01-27T14:27:26.026898138Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1509,11 +1509,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-8.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-8.0.0.tgz
     version: 8.0.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:55.044852544Z"
+    created: "2022-01-27T14:27:26.007799089Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1545,11 +1545,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.4.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.4.1.tgz
     version: 7.4.1
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:55.026253125Z"
+    created: "2022-01-27T14:27:25.99025026Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1581,11 +1581,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.4.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.4.0.tgz
     version: 7.4.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:55.007258102Z"
+    created: "2022-01-27T14:27:25.972088823Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1617,11 +1617,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.3.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.3.1.tgz
     version: 7.3.1
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:54.988773484Z"
+    created: "2022-01-27T14:27:25.954822398Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1653,11 +1653,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.3.0.tgz
     version: 7.3.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:54.970612571Z"
+    created: "2022-01-27T14:27:25.93654576Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1689,11 +1689,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.2.1.tgz
     version: 7.2.1
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:54.955084188Z"
+    created: "2022-01-27T14:27:25.919610139Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1725,11 +1725,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.2.0.tgz
     version: 7.2.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:54.937920386Z"
+    created: "2022-01-27T14:27:25.901622304Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1761,11 +1761,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.1.0.tgz
     version: 7.1.0
   - apiVersion: v2
     appVersion: 20.10.1
-    created: "2022-01-27T14:18:54.919862974Z"
+    created: "2022-01-27T14:27:25.883478568Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1797,11 +1797,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-7.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-7.0.0.tgz
     version: 7.0.0
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.902486469Z"
+    created: "2022-01-27T14:27:25.865850338Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1833,11 +1833,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-6.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-6.2.1.tgz
     version: 6.2.1
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.885682872Z"
+    created: "2022-01-27T14:27:25.847031792Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1869,11 +1869,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-6.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-6.2.0.tgz
     version: 6.2.0
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.869342379Z"
+    created: "2022-01-27T14:27:25.830187673Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1905,11 +1905,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-6.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-6.1.0.tgz
     version: 6.1.0
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.852350479Z"
+    created: "2022-01-27T14:27:25.811712632Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1941,11 +1941,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-6.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-6.0.0.tgz
     version: 6.0.0
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.835642183Z"
+    created: "2022-01-27T14:27:25.793581895Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -1977,11 +1977,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.6.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.6.1.tgz
     version: 5.6.1
   - apiVersion: v2
     appVersion: 20.9.0
-    created: "2022-01-27T14:18:54.818631683Z"
+    created: "2022-01-27T14:27:25.776092267Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2013,11 +2013,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.6.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.6.0.tgz
     version: 5.6.0
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.801202578Z"
+    created: "2022-01-27T14:27:25.759360349Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2049,11 +2049,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.5.0.tgz
     version: 5.5.0
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.785298491Z"
+    created: "2022-01-27T14:27:25.74260913Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2085,11 +2085,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.4.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.4.0.tgz
     version: 5.4.0
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.769241502Z"
+    created: "2022-01-27T14:27:25.722372667Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2121,11 +2121,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.3.0.tgz
     version: 5.3.0
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.75125719Z"
+    created: "2022-01-27T14:27:25.705039741Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2157,11 +2157,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.2.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.2.3.tgz
     version: 5.2.3
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.733733084Z"
+    created: "2022-01-27T14:27:25.688048619Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2193,11 +2193,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.2.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.2.2.tgz
     version: 5.2.2
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.715117165Z"
+    created: "2022-01-27T14:27:25.670881295Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2229,11 +2229,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.2.1.tgz
     version: 5.2.1
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.696057841Z"
+    created: "2022-01-27T14:27:25.652021649Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2265,11 +2265,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.2.0.tgz
     version: 5.2.0
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.680103953Z"
+    created: "2022-01-27T14:27:25.633561608Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2301,11 +2301,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.1.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.1.3.tgz
     version: 5.1.3
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.662619348Z"
+    created: "2022-01-27T14:27:25.615376771Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2337,11 +2337,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.1.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.1.2.tgz
     version: 5.1.2
   - apiVersion: v2
     appVersion: 20.8.1
-    created: "2022-01-27T14:18:54.646309756Z"
+    created: "2022-01-27T14:27:25.598061445Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2373,11 +2373,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.1.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.1.1.tgz
     version: 5.1.1
   - apiVersion: v2
     appVersion: 20.8.0
-    created: "2022-01-27T14:18:54.629895963Z"
+    created: "2022-01-27T14:27:25.580858521Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2409,11 +2409,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.1.0.tgz
     version: 5.1.0
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.61271246Z"
+    created: "2022-01-27T14:27:25.561075763Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2445,11 +2445,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.0.1.tgz
     version: 5.0.1
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.595456557Z"
+    created: "2022-01-27T14:27:25.542390619Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2481,11 +2481,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-5.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-5.0.0.tgz
     version: 5.0.0
   - apiVersion: v2
     appVersion: 20.7.0
-    created: "2022-01-27T14:18:54.578143554Z"
+    created: "2022-01-27T14:27:25.524731589Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2513,11 +2513,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.8.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.8.1.tgz
     version: 4.8.1
   - apiVersion: v2
     appVersion: 20.7.0
-    created: "2022-01-27T14:18:54.563486381Z"
+    created: "2022-01-27T14:27:25.509548291Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2545,11 +2545,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.8.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.8.0.tgz
     version: 4.8.0
   - apiVersion: v2
     appVersion: 20.7.0
-    created: "2022-01-27T14:18:54.54719059Z"
+    created: "2022-01-27T14:27:25.493900787Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2577,11 +2577,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.7.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.7.2.tgz
     version: 4.7.2
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.531458405Z"
+    created: "2022-01-27T14:27:25.476934466Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2609,11 +2609,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.7.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.7.1.tgz
     version: 4.7.1
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.514308403Z"
+    created: "2022-01-27T14:27:25.459783942Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2641,11 +2641,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.7.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.7.0.tgz
     version: 4.7.0
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.494245267Z"
+    created: "2022-01-27T14:27:25.44355443Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2673,11 +2673,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.6.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.6.0.tgz
     version: 4.6.0
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.477087565Z"
+    created: "2022-01-27T14:27:25.427948727Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2705,11 +2705,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.5.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.5.1.tgz
     version: 4.5.1
   - apiVersion: v2
     appVersion: 20.7.2
-    created: "2022-01-27T14:18:54.461281979Z"
+    created: "2022-01-27T14:27:25.411578613Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2737,11 +2737,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.5.0.tgz
     version: 4.5.0
   - apiVersion: v2
     appVersion: 20.7.1
-    created: "2022-01-27T14:18:54.444766085Z"
+    created: "2022-01-27T14:27:25.394123086Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2769,11 +2769,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.4.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.4.0.tgz
     version: 4.4.0
   - apiVersion: v2
     appVersion: 20.7.1
-    created: "2022-01-27T14:18:54.42993681Z"
+    created: "2022-01-27T14:27:25.377971975Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2801,11 +2801,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.3.0.tgz
     version: 4.3.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.41379742Z"
+    created: "2022-01-27T14:27:25.360846552Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2833,11 +2833,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.2.0.tgz
     version: 4.2.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.399485152Z"
+    created: "2022-01-27T14:27:25.343649027Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2865,11 +2865,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.1.0.tgz
     version: 4.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.383833568Z"
+    created: "2022-01-27T14:27:25.327519117Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2897,11 +2897,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-4.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-4.0.0.tgz
     version: 4.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.369101995Z"
+    created: "2022-01-27T14:27:25.311369006Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2929,11 +2929,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-3.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-3.1.0.tgz
     version: 3.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.354633924Z"
+    created: "2022-01-27T14:27:25.294951492Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2961,11 +2961,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-3.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-3.0.1.tgz
     version: 3.0.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.339084342Z"
+    created: "2022-01-27T14:27:25.279489491Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -2993,11 +2993,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-3.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-3.0.0.tgz
     version: 3.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.323784362Z"
+    created: "2022-01-27T14:27:25.2648374Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3025,11 +3025,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-2.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-2.2.0.tgz
     version: 2.2.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.309093989Z"
+    created: "2022-01-27T14:27:25.248084381Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3057,11 +3057,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-2.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-2.1.0.tgz
     version: 2.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.294857521Z"
+    created: "2022-01-27T14:27:25.232549278Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3089,11 +3089,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-2.0.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-2.0.1.tgz
     version: 2.0.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:54.280840856Z"
+    created: "2022-01-27T14:27:25.215659758Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3121,11 +3121,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-2.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-2.0.0.tgz
     version: 2.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.755406175Z"
+    created: "2022-01-27T14:27:24.690772313Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3153,11 +3153,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-1.3.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-1.3.1.tgz
     version: 1.3.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.741910917Z"
+    created: "2022-01-27T14:27:24.675858718Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3185,11 +3185,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-1.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-1.3.0.tgz
     version: 1.3.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.726471035Z"
+    created: "2022-01-27T14:27:24.660917123Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3217,11 +3217,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-1.2.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-1.2.0.tgz
     version: 1.2.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.710099042Z"
+    created: "2022-01-27T14:27:24.645838327Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3249,11 +3249,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-1.1.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-1.1.0.tgz
     version: 1.1.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.694962164Z"
+    created: "2022-01-27T14:27:24.630033621Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3281,11 +3281,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-1.0.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-1.0.0.tgz
     version: 1.0.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.666050124Z"
+    created: "2022-01-27T14:27:24.60082794Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3313,11 +3313,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.12.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.12.3.tgz
     version: 0.12.3
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.648409617Z"
+    created: "2022-01-27T14:27:24.585421039Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3345,11 +3345,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.12.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.12.2.tgz
     version: 0.12.2
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.63419665Z"
+    created: "2022-01-27T14:27:24.568727621Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3377,11 +3377,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.12.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.12.1.tgz
     version: 0.12.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.618181661Z"
+    created: "2022-01-27T14:27:24.553402621Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3409,11 +3409,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.12.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.12.0.tgz
     version: 0.12.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.602377975Z"
+    created: "2022-01-27T14:27:24.538302824Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3441,11 +3441,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.11.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.11.1.tgz
     version: 0.11.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.586801792Z"
+    created: "2022-01-27T14:27:24.522931524Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3473,11 +3473,11 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.11.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.11.0.tgz
     version: 0.11.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.571636214Z"
+    created: "2022-01-27T14:27:24.508171831Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3505,122 +3505,122 @@ entries:
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.10.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.10.0.tgz
     version: 0.10.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.679194179Z"
+    created: "2022-01-27T14:27:24.614536019Z"
     description: A Helm chart for Kubernetes
     digest: ccf7aabac486a68779d6564d90a875b45fefa4e4a9e8f86903355cf886b6a3aa
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.9.4.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.9.4.tgz
     version: 0.9.4
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.677874463Z"
+    created: "2022-01-27T14:27:24.613409604Z"
     description: A Helm chart for Kubernetes
     digest: 07b380bbb341bb276b962de0b3721c9142a97e9fd084a394fc4d9f5db75bceea
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.9.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.9.3.tgz
     version: 0.9.3
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.676837651Z"
+    created: "2022-01-27T14:27:24.612209388Z"
     description: A Helm chart for Kubernetes
     digest: a5a52cb5362e604215b1811e053a1b790d8f2e6c0c553a55d52f0750a6f63936
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.9.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.9.2.tgz
     version: 0.9.2
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.67586354Z"
+    created: "2022-01-27T14:27:24.611048073Z"
     description: A Helm chart for Kubernetes
     digest: 81e65b09754dea768122d4d619801bab77714f9c77520afbc1658c7bf68b563d
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.9.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.9.1.tgz
     version: 0.9.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.674679126Z"
+    created: "2022-01-27T14:27:24.609751056Z"
     description: A Helm chart for Kubernetes
     digest: 225f13adbe6a002014b135afc02b65771fbb5bbdf6f09e3179a408beb316846c
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.9.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.9.0.tgz
     version: 0.9.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.673047307Z"
+    created: "2022-01-27T14:27:24.608099635Z"
     description: A Helm chart for Kubernetes
     digest: aef5a5cd789251ab629d25d18ac94a7801e80fb99dde54dc98111e7547326ce8
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.8.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.8.0.tgz
     version: 0.8.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.671740691Z"
+    created: "2022-01-27T14:27:24.606268611Z"
     description: A Helm chart for Kubernetes
     digest: 2ced97e545a92598f9b3bc487aa53b7b4cd6df8ba2b97ffbce5807a6e0a641d0
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.7.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.7.0.tgz
     version: 0.7.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.670661078Z"
+    created: "2022-01-27T14:27:24.605181597Z"
     description: A Helm chart for Kubernetes
     digest: bf3b118679f72f65fa20120dfd4c1718b56694250e80dac285189a0073a2fbcc
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.6.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.6.1.tgz
     version: 0.6.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.669374963Z"
+    created: "2022-01-27T14:27:24.604094082Z"
     description: A Helm chart for Kubernetes
     digest: b24391c885cb84817b024df7feb81feb6d97443a1e7cf26d6a7a04cdd3e1af0c
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.6.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.6.0.tgz
     version: 0.6.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.66821685Z"
+    created: "2022-01-27T14:27:24.602988868Z"
     description: A Helm chart for Kubernetes
     digest: 476900c519773349f70e8d0171f870ba5ad7983c62fcc72ae3b7799948500f33
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.5.0.tgz
     version: 0.5.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:53.667029936Z"
+    created: "2022-01-27T14:27:24.601920954Z"
     description: A Helm chart for Kubernetes
     digest: 0da209fcf559a3aa66ef7715cf6327da2337e3739fff89e06a25d2e6a1488765
     name: sentry
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-0.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-0.2.1.tgz
     version: 0.2.1
   sentry-db:
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.426247231Z"
+    created: "2022-01-27T14:27:26.409451127Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3647,11 +3647,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.9.4.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.9.4.tgz
     version: 0.9.4
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.41347118Z"
+    created: "2022-01-27T14:27:26.396347556Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3678,11 +3678,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.9.3.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.9.3.tgz
     version: 0.9.3
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.400741231Z"
+    created: "2022-01-27T14:27:26.383225185Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3709,11 +3709,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.9.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.9.2.tgz
     version: 0.9.2
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.387201171Z"
+    created: "2022-01-27T14:27:26.370083814Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3740,11 +3740,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.9.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.9.1.tgz
     version: 0.9.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.37347881Z"
+    created: "2022-01-27T14:27:26.35755245Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3771,11 +3771,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.9.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.9.0.tgz
     version: 0.9.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.358667936Z"
+    created: "2022-01-27T14:27:26.345726196Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3802,11 +3802,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.8.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.8.0.tgz
     version: 0.8.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.345646282Z"
+    created: "2022-01-27T14:27:26.333478936Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3833,11 +3833,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.7.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.7.0.tgz
     version: 0.7.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.33183702Z"
+    created: "2022-01-27T14:27:26.320458667Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3864,11 +3864,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.6.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.6.1.tgz
     version: 0.6.1
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.31740445Z"
+    created: "2022-01-27T14:27:26.304076453Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3895,11 +3895,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.6.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.6.0.tgz
     version: 0.6.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.304288096Z"
+    created: "2022-01-27T14:27:26.2923685Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3926,11 +3926,11 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.5.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.5.0.tgz
     version: 0.5.0
   - apiVersion: v2
     appVersion: 10.0.0
-    created: "2022-01-27T14:18:55.291578146Z"
+    created: "2022-01-27T14:27:26.277942512Z"
     dependencies:
     - condition: redis.enabled
       name: redis
@@ -3957,12 +3957,12 @@ entries:
     name: sentry-db
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-db-0.2.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-db-0.2.1.tgz
     version: 0.2.1
   sentry-kubernetes:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-01-27T14:18:55.427234942Z"
+    created: "2022-01-27T14:27:26.410508241Z"
     description: A Helm chart for sentry-kubernetes (https://github.com/getsentry/sentry-kubernetes)
     digest: 57760fc8ad6d26a6cf3d28b78bfb2bdb8d80f4cce2ff1d4e527c2b2f3d1437c9
     home: https://github.com/getsentry/sentry-kubernetes
@@ -3976,11 +3976,11 @@ entries:
     - https://github.com/sentry-kubernetes/charts
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-kubernetes-0.3.2.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-kubernetes-0.3.2.tgz
     version: 0.3.2
   - apiVersion: v2
     appVersion: latest
-    created: "2022-01-27T14:18:55.426912738Z"
+    created: "2022-01-27T14:27:26.410169637Z"
     description: A Helm chart for sentry-kubernetes (https://github.com/getsentry/sentry-kubernetes)
     digest: 233c575ab9e3eb3f63ee347cf32d3719b22e6546952a160cf253b32f895b5b83
     home: https://github.com/getsentry/sentry-kubernetes
@@ -3994,11 +3994,11 @@ entries:
     - https://github.com/sentry-kubernetes/charts
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-kubernetes-0.3.1.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-kubernetes-0.3.1.tgz
     version: 0.3.1
   - apiVersion: v2
     appVersion: latest
-    created: "2022-01-27T14:18:55.426594235Z"
+    created: "2022-01-27T14:27:26.409832332Z"
     description: A Helm chart for sentry-kubernetes (https://github.com/getsentry/sentry-kubernetes)
     digest: 727778ddeffa08ad086e07dc6014f13a905145cde1d257816df2fd52f1ec93db
     home: https://github.com/getsentry/sentry-kubernetes
@@ -4012,6 +4012,6 @@ entries:
     - https://github.com/sentry-kubernetes/charts
     type: application
     urls:
-    - http://rubemlrm.com/sentry-kubernetes-charts/sentry-kubernetes-0.3.0.tgz
+    - https://rubemlrm.com/sentry-kubernetes-charts/charts/sentry-kubernetes-0.3.0.tgz
     version: 0.3.0
-generated: "2022-01-27T14:18:53.533402264Z"
+generated: "2022-01-27T14:27:24.470955646Z"
