@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: cmy-fluentd-configs
-  labels: {{- include "efk.labels" . | nindent 4 }}
+  labels: {{- include "efk.labels" . | nindent 4}}
 stringData:
   01_sources.conf: |-
     <source>
@@ -12,6 +12,14 @@ stringData:
       bind 0.0.0.0
       body_size_limit 32m
       keepalive_timeout 10s
+      <parse>
+        @type json
+        time_key time
+        time_type string
+        keep_time_key true
+        time_format "%Y-%m-%dT%H:%M:%S.%N%:z"
+        estimate_current_event false
+      </parse>
       @label @ELASTIC_INPUT
     </source>
     <source>
