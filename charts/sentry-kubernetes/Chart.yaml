@@ -7,8 +7,8 @@ appVersion: latest
 home: https://github.com/getsentry/sentry-kubernetes
 icon: https://sentry-brand.storage.googleapis.com/sentry-glyph-white.png
 keywords:
-- sentry
-- report kubernetes events
+  - sentry
+  - report kubernetes events
 sources:
-- https://github.com/getsentry/sentry-kubernetes
-- https://github.com/sentry-kubernetes/charts
+  - https://github.com/getsentry/sentry-kubernetes
+  - https://github.com/sentry-kubernetes/charts

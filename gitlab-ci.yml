@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy
+
+build:archive:
+  stage: build
+  image: busybox
+  script:
+    - cd charts || exit 1;
+      for dir in */;
+      do
+      dir="${dir::-1}";
+      tar -czvf "../$dir".tgz "$dir";
+      done
+  tags:
+    - rancher
+  artifacts:
+    expire_in: 1 day
+    when: always
+    paths:
+      - ./*.tgz
+      - index.yaml
+
+upload:
+  stage: deploy
+  image: curlimages/curl
+  dependencies:
+    - build:archive
+  script:
+    - for chart in ./*.tgz;
+      do
+      curl --request POST --user gitlab-ci-token:$CI_JOB_TOKEN --form "chart=@$chart" "https://gitlab.motius.de/api/v4/projects/${CI_PROJECT_ID}/packages/helm/api/stable/charts";
+      done
+    - echo "helm repo add ${CI_PROJECT_NAME} https://gitlab.motius.de/api/v4/projects/${CI_PROJECT_ID}/packages/helm/stable"
+  tags:
+    - rancher
+  only:
+    - main
