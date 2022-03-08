@@ -35,4 +35,4 @@ upload:
   tags:
     - rancher
   only:
-    - main
+    - develop
