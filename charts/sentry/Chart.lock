@@ -1,21 +1,21 @@
 dependencies:
-- name: redis
-  repository: https://charts.bitnami.com/bitnami
-  version: 15.3.2
-- name: kafka
-  repository: https://charts.bitnami.com/bitnami
-  version: 14.2.6
-- name: clickhouse
-  repository: https://gitlab.motius.de/api/v4/projects/2194/packages/helm/stable
-  version: 3.1.2
-- name: rabbitmq
-  repository: https://charts.bitnami.com/bitnami
-  version: 8.9.1
-- name: postgresql
-  repository: https://charts.bitnami.com/bitnami
-  version: 10.2.4
-- name: nginx
-  repository: https://charts.bitnami.com/bitnami
-  version: 9.3.3
+  - name: redis
+    repository: https://charts.bitnami.com/bitnami
+    version: 15.3.2
+  - name: kafka
+    repository: https://charts.bitnami.com/bitnami
+    version: 14.2.6
+  - name: clickhouse
+    repository: https://gitlab.motius.de/api/v4/projects/2194/packages/helm/stable
+    version: 3.1.2
+  - name: rabbitmq
+    repository: https://charts.bitnami.com/bitnami
+    version: 8.9.1
+  - name: postgresql
+    repository: https://charts.bitnami.com/bitnami
+    version: 10.2.4
+  - name: nginx
+    repository: https://charts.bitnami.com/bitnami
+    version: 9.3.3
 digest: sha256:5c2f64ec7dd9e80f6f6485cbc8e4998cb5b83eb072de8752f14af623e3723cd5
 generated: "2022-03-08T14:14:24.15964+01:00"
