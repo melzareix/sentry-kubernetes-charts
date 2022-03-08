@@ -14,7 +14,7 @@ dependencies:
     version: ~14.2.1
     condition: kafka.enabled
   - name: clickhouse
-    repository: http://rubemlrm.com/sentry-kubernetes-charts/charts
+    repository: https://gitlab.motius.de/api/v4/projects/2194/packages/helm/stable
     version: 3.1.2
     condition: clickhouse.enabled
   - name: rabbitmq
